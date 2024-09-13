@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.AutoDesigner{
+  margin: 20px;
+}
+
+button{
+  background-color: aqua;
+  border:2px solid #282c34;
+  border-radius: 10px;
+  padding: 10px;
+ font-size: 15px;
+}

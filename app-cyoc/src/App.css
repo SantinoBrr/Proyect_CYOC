@@ -1,5 +1,12 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .App {
   text-align: center;
+  width: 100%;
 }
 
 .App-logo {
@@ -15,13 +22,15 @@
 
 .App-header {
   background-color: #282c34;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-top: 50px;
   font-size: calc(10px + 2vmin);
   color: white;
+  box-sizing: border-box;
 }
 
 .App-link {
@@ -35,16 +44,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.AutoDesigner{
-  margin: 20px;
-}
-
-button{
-  background-color: aqua;
-  border:2px solid #282c34;
-  border-radius: 10px;
-  padding: 10px;
- font-size: 15px;
 }

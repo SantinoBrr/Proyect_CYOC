@@ -1,13 +1,31 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f7f7f7;
+    height: 100%; 
 }
-
+.App-header {
+    background-color: #282c34;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    box-sizing: border-box; 
+}
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
 .login-page {
     background-color: #ffffff;
     padding: 40px;
@@ -51,7 +69,10 @@ input[type="password"]:focus {
     border-color: #007bff;
     outline: none;
 }
+.boton-create-car{
+    padding-top: 20px;
 
+}
 button {
     padding: 10px;
     background-color: #007bff;
@@ -60,11 +81,12 @@ button {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.1);
 }
 
 button:disabled {
@@ -79,6 +101,7 @@ p {
 }
 
 .navbar {
+    background-color: red;
     width: 100%;
     position: fixed;
     z-index: 1000;

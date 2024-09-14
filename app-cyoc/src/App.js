@@ -1,6 +1,7 @@
 import miImagen from './assets/images/Imagen_Rueda.png';
 import AutoDesigner from './Components/AutoDesigner';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
   return (

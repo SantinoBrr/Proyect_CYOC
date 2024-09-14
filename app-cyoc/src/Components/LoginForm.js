@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { authService } from '../services/authService';
-import '../assets/styles/styles.css';
+import { authService } from './services/authService';
 import { useNavigate } from 'react-router-dom';
+import '../styles/styles.css'
 
 function LoginForm() {
     const [email, setEmail] = useState('');

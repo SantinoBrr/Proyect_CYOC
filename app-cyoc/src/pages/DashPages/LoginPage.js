@@ -10,9 +10,11 @@ function LoginPage() {
     }
 
     return (
+        <div className='login-page-container'>
         <div className='login-page'>
             <h2>Iniciar sesion</h2>
             <LoginForm onSubmit={handleLogin} />
+        </div>
         </div>
     )
 }

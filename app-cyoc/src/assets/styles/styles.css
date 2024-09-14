@@ -26,12 +26,38 @@ code {
       monospace;
   }
   
+  .login-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  
+    background-color: #f7f7f7; 
+}
+
 .login-page {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     max-width: 400px;
+    width: 100%;
+}
+
+.create-car-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  
+    background-color: #f7f7f7; 
+}
+
+.create-car-page {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;  
     width: 100%;
 }
 
@@ -107,4 +133,28 @@ p {
     z-index: 1000;
     top: 0;
     left: 0;
+    align-items:end;
+}
+
+.about-me {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.about-me h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-me p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }

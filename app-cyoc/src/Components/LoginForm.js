@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { authService } from './services/authService';
 import { useNavigate } from 'react-router-dom';
-import '../styles/styles.css'
 
-function LoginForm() {
+function LoginForm({ onSubmit }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const navegate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +18,7 @@ function LoginForm() {
             .then(response => {
                 setLoading(false);
                 if (response.success) {
-                    navegate('/dash');
+                    navigate('/dash');
                 } else {
                     setErrorMessage(response.message);
                 }

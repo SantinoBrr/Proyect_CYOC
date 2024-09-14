@@ -1,8 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import miImagen from './assets/images/Imagen_Rueda.png';
 import './App.css';
-import './styles/styles.css';
+import './assets/styles/styles.css';
 import Navbar from './Components/NavBar/NavBar';
 import Routing from './pages/Routing/Routing';
 

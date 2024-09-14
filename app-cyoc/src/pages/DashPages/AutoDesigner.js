@@ -11,7 +11,7 @@ function AutoDesigner() {
   };
 
   return (
-    <div>
+    <div className="create-car-page-container">
       <h2>Diseña tu Auto</h2>
       {/* Ejemplo de botón para seleccionar partes */}
       <button onClick={() => handlePartSelect('llantas')}>Seleccionar Llantas</button>

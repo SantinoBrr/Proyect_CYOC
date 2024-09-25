@@ -21,9 +21,21 @@ function Navbar() {
               <Button color='inherit' component={Link} to="/register">Sign Up</Button>
             </>
           )}
+          {location.pathname === '/login' && (
+            <>
+              <Button color='inherit' component={Link} to="/about">About us</Button>
+              <Button color='inherit' component={Link} to="/register">Sign Up</Button>
+            </>
+          )}
+          {location.pathname === '/register' && (
+            <>
+              <Button color='inherit' component={Link} to="/about">About us</Button>
+              <Button color='inherit' component={Link} to="/login">Sign in</Button>
+            </>
+          )}
           {location.pathname === '/create-car' && (
             <>
-              <Button color='inherit' component={Link} to="/about">Conocenos</Button>
+              <Button color='inherit' component={Link} to="/about">About us</Button>
             </>
           )}
         </Box>

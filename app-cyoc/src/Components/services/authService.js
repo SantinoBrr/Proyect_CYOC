@@ -3,7 +3,6 @@ export const authService = {
         return fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(users => {
-                // JSONPlaceholder no tiene contraseñas, así que simulamos una
                 const user = users.find(u => u.email === email);
                 const validPassword = "contrasena123";  // Contraseña simulada
 
@@ -19,5 +18,22 @@ export const authService = {
                 console.error('Error en la autenticación:', error.message);
                 return { success: false, message: error.message };
             });
+    },
+
+    registerUser: (email, name, password) => {
+        return fetch('https://jsonplaceholder.typicode.com/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, name, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Registro exitoso:', data);
+            return { success: true, data };
+        })
+        .catch(error => {
+            console.error('Error en el registro:', error.message);
+            return { success: false, message: error.message };
+        });
     }
 };

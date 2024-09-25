@@ -13,12 +13,12 @@ function Navbar() {
     <AppBar position="fixed" className='navbar'>
       <Toolbar>
         <Box>
-          <Button color='inherit' component={Link} to="/">Inicio</Button>
+          <Button color='inherit' component={Link} to="/">Home</Button>
           {location.pathname === '/' && (
             <>
-              <Button color='inherit' component={Link} to="/about">Conocenos</Button>
-              <Button color='inherit' component={Link} to="/login">Inicia Sesion</Button>
-              <Button color='inherit' component={Link} to="/register">Registrarse</Button>
+              <Button color='inherit' component={Link} to="/about">About us</Button>
+              <Button color='inherit' component={Link} to="/login">Sign in</Button>
+              <Button color='inherit' component={Link} to="/register">Sign Up</Button>
             </>
           )}
           {location.pathname === '/create-car' && (

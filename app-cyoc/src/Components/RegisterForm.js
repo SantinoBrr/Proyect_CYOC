@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { authService } from './services/authService';
 import { useNavigate } from 'react-router-dom';
 
-function LoginForm({ onSubmit }) {
+function RegisterForm({ onSubmit }) {
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
@@ -14,7 +15,7 @@ function LoginForm({ onSubmit }) {
         setLoading(true);
         setErrorMessage('');
 
-        authService.login(email, password)
+        authService.registerUser(email, name, password)
             .then(response => {
                 setLoading(false);
                 if (response.success) {
@@ -32,6 +33,15 @@ function LoginForm({ onSubmit }) {
     return (
         <form onSubmit={handleSubmit}>
             <div>
+            <div>
+                <label>Name:</label>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+            </div>
                 <label>Email:</label>
                 <input
                     type="email"
@@ -41,7 +51,7 @@ function LoginForm({ onSubmit }) {
                 />
             </div>
             <div>
-                <label>Contraseña:</label>
+                <label>Password:</label>
                 <input
                     type="password"
                     value={password}
@@ -50,11 +60,11 @@ function LoginForm({ onSubmit }) {
                 />
             </div>
             <button type="submit" disabled={loading}>
-                {loading ? 'Cargando...' : 'Ingresar'}
+                {loading ? 'Cargando...' : 'Register'}
             </button>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </form>
     );
 }
 
-export default LoginForm;
+export default RegisterForm;

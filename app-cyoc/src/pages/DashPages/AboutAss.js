@@ -4,7 +4,7 @@ import '../../assets/styles/styles.css';
 function AboutMe() {
     return (
         <div className="about-me">
-            <h1>About Me</h1>
+            <h1>About Ass</h1>
             <p>
                 Hello! Im [Your Name], and welcome to my website. Im passionate about [your interests or profession], and I love creating amazing things with technology.
             </p>

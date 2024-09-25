@@ -43,6 +43,10 @@ code {
     width: 100%;
 }
 
+.register-form{
+    display: flex;
+    
+}
 .create-car-page-container {
     display: flex;
     flex-direction: column;
@@ -80,7 +84,9 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"]
+ {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -91,7 +97,8 @@ input[type="password"] {
 }
 
 input[type="email"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="text"]:focus {
     border-color: #007bff;
     outline: none;
 }

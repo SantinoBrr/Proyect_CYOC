@@ -18,7 +18,7 @@ function LoginForm({ onSubmit }) {
             .then(response => {
                 setLoading(false);
                 if (response.success) {
-                    navigate('/login');
+                    navigate('/'); 
                 } else {
                     setErrorMessage(response.message);
                 }
@@ -41,7 +41,7 @@ function LoginForm({ onSubmit }) {
                 />
             </div>
             <div>
-                <label>Contraseña:</label>
+                <label>Password:</label>
                 <input
                     type="password"
                     value={password}
@@ -50,7 +50,7 @@ function LoginForm({ onSubmit }) {
                 />
             </div>
             <button type="submit" disabled={loading}>
-                {loading ? 'Cargando...' : 'Ingresar'}
+                {loading ? 'Loading...' : 'Login'}
             </button>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </form>

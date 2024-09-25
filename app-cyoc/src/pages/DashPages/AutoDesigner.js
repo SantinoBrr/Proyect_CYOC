@@ -1,4 +1,3 @@
-// src/components/AutoDesigner.js
 import React, { useState } from 'react';
 
 function AutoDesigner() {

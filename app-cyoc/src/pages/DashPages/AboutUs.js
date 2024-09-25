@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../assets/styles/styles.css';
 
-function AboutAss() {
+function AboutUs() {
     return (
         <div className="about-me">
             <h1>About Us</h1>
@@ -49,4 +49,4 @@ function AboutAss() {
     );
 }
 
-export default AboutAss;
+export default AboutUs;

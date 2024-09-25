@@ -51,7 +51,7 @@ export const authService = {
     },
     
     isAuthenticated: () => {
-        return currentUser !== null; // Devuelve true si hay un usuario autenticado
+        return currentUser !== null;
     }
 };
 

@@ -6,7 +6,7 @@ body {
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #f7f7f7;
+    background-color: #282c34;
     height: 100%; 
 }
 .App-header {
@@ -31,11 +31,10 @@ code {
     justify-content: center;
     align-items: center;
     min-height: 100vh;  
-    background-color: #f7f7f7; 
 }
 
 .login-page {
-    background-color: #ffffff;
+    background-color: #eeeeee;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -94,6 +93,7 @@ input[type="text"]
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
+    background-color: #fdfdfd;
 }
 
 input[type="email"]:focus,
@@ -144,7 +144,7 @@ p {
    
 }
 
-.about-me {
+.about-us {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
@@ -154,13 +154,13 @@ p {
     text-align: center;
 }
 
-.about-me h1 {
+.about-us h1 {
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 20px;
 }
 
-.about-me p {
+.about-us p {
     font-size: 1.2rem;
     color: #555;
     line-height: 1.6;

@@ -3,7 +3,7 @@ import '../../assets/styles/styles.css';
 
 function AboutUs() {
     return (
-        <div className="about-me">
+        <div className="about-us">
             <h1>About Us</h1>
             <p>
                 CYOC (Create Your Own Car) is an innovative platform designed for automotive

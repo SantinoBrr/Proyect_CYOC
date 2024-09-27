@@ -8,7 +8,6 @@ function LoginPage() {
         console.log(email, password)
 
     }
-
     return (
         <div className='login-page-container'>
         <div className='login-page'>

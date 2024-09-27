@@ -88,3 +88,7 @@ body {
     transform: scale(1.1);
     background-color: rgb(189, 160, 0);
 }
+.p-selectpart{
+    color: #ffffffff;
+    font-size: 2.5vh;
+}

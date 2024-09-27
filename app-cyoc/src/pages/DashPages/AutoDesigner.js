@@ -35,7 +35,8 @@ function AutoDesigner() {
         </div>
       </div>
       <div>
-        {selectedPart && <p>Selected part: {selectedPart}</p>}
+      {selectedPart && <p className='p-selectpart'>Selected part: {selectedPart}</p>}
+
       </div>
     </div>
   );

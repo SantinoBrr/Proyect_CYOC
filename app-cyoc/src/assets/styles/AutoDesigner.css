@@ -1,0 +1,74 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Oswald", sans-serif;
+    background-color: #282c34;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    padding: 20px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 100px); /* Restar el alto del header */
+    align-items: stretch;
+    width: 100%;
+}
+
+.option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: flex-grow 0.5s ease;
+    overflow: hidden;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.option:hover {
+    flex-grow: 2; /* Para que se agrande al hacer hover */
+}
+
+.option .label {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.option .description {
+    display: none;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    font-size: 1.4em;
+    text-align: center;
+    width: 80%;
+    z-index: 1;
+}
+
+.option:hover .description {
+    display: block;
+}
+
+#chasis { background-color: rgb(59, 59, 59); }
+#llanta { background-color: rgb(78, 78, 78); }
+#motor { background-color: rgb(59, 59, 59); }
+#color { background-color: rgb(78, 78, 78); }
+
+.choose {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: gold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

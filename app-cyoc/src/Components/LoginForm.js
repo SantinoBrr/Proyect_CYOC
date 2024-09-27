@@ -28,7 +28,6 @@ function LoginForm({ onSubmit }) {
                 setErrorMessage(error.message);
             });
     };
-
     return (
         <form onSubmit={handleSubmit}>
             <div>

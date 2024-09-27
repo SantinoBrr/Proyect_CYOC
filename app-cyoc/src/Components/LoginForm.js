@@ -8,7 +8,6 @@ function LoginForm({ onSubmit }) {
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);

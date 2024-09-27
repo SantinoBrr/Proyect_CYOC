@@ -1,24 +1,36 @@
 html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    height: 100%;
+    overflow-x: hidden;
+}
+body {
+    margin: 0;
     font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background-color: #282c34;
+    height: 100%;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .header {
-    background-color: black;
     color: white;
     text-align: center;
     font-size: 2em;
     padding: 20px;
     flex-shrink: 0;
     width: 100%;
+    margin-top: 60px;
 }
 
 .container {
     display: flex;
-    height: calc(100vh - 100px); /* Restar el alto del header */
+    height: calc(100vh - 100px);
     align-items: stretch;
     width: 100%;
 }
@@ -37,7 +49,7 @@ html, body {
 }
 
 .option:hover {
-    flex-grow: 2; /* Para que se agrande al hacer hover */
+    flex-grow: 2;
 }
 
 .option .label {
@@ -71,4 +83,8 @@ html, body {
     border: none;
     outline: none;
     cursor: pointer;
+}
+.choose:hover{
+    transform: scale(1.1);
+    background-color: rgb(189, 160, 0);
 }

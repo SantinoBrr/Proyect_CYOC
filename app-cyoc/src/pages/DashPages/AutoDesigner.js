@@ -1,45 +1,41 @@
 import React, { useState } from 'react';
-import '../../assets/styles/AutoDesigner.css'; // El archivo CSS que contiene los estilos que tenías
+import '../../assets/styles/AutoDesigner.css';
 
 function AutoDesigner() {
   const [selectedPart, setSelectedPart] = useState(null);
-
-  // Función para manejar la selección de partes
   const handlePartSelect = (part) => {
     setSelectedPart(part);
-    // Aquí iría la lógica para actualizar el diseño del auto
   };
 
   return (
     <div>
       <header className="header">
-        SELECCIÓN DE PARTES
+        SELECT CAR PARTS
       </header>
       <div className="container">
         <div className="option" id="chasis" onClick={() => handlePartSelect('chasis')}>
-          <div className="label">CHASIS</div>
-          <button className="choose">ELEGIR</button>
-          <div className="description">El chasis de un auto es la estructura base que soporta todos los componentes mecánicos y la carrocería.</div>
+          <div className="label">CHASSIS</div>
+          <button className="choose">CHOOSE</button>
+          <div className="description">The car chassis is the base structure supporting all mechanical components and the bodywork.</div>
         </div>
-        <div className="option" id="llanta" onClick={() => handlePartSelect('llantas')}>
-          <div className="label">LLANTA</div>
-          <button className="choose">ELEGIR</button>
-          <div className="description">Las ruedas son esenciales para el movimiento del vehículo y soportan todo el peso.</div>
+        <div className="option" id="llanta" onClick={() => handlePartSelect('wheels')}>
+          <div className="label">WHEEL</div>
+          <button className="choose">CHOOSE</button>
+          <div className="description">The wheels are essential for vehicle movement and support the entire weight.</div>
         </div>
-        <div className="option" id="motor" onClick={() => handlePartSelect('motor')}>
-          <div className="label">MOTOR</div>
-          <button className="choose">ELEGIR</button>
-          <div className="description">El motor es el corazón del vehículo, convierte el combustible en movimiento.</div>
+        <div className="option" id="motor" onClick={() => handlePartSelect('engine')}>
+          <div className="label">ENGINE</div>
+          <button className="choose">CHOOSE</button>
+          <div className="description">The engine is the heart of the vehicle, converting fuel into motion.</div>
         </div>
         <div className="option" id="color" onClick={() => handlePartSelect('color')}>
           <div className="label">COLOR</div>
-          <button className="choose">ELEGIR</button>
-          <div className="description">El color es la elección estética del exterior de tu auto.</div>
+          <button className="choose">CHOOSE</button>
+          <div className="description">Color is the aesthetic choice for your car's exterior.</div>
         </div>
       </div>
-      {/* Mostrar la parte seleccionada */}
       <div>
-        {selectedPart && <p>Parte seleccionada: {selectedPart}</p>}
+        {selectedPart && <p>Selected part: {selectedPart}</p>}
       </div>
     </div>
   );

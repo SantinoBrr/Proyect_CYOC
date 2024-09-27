@@ -11,9 +11,9 @@ function HomePage() {
 
   const handleCreateCarClick = () => {
       if (authService.isAuthenticated()) {
-          navigate('/create-car'); // Redirigir a AutoDesigner
+          navigate('/create-car');
       } else {
-          navigate('/login'); // Redirigir a la página de inicio de sesión
+          navigate('/login');
       }
   };
 

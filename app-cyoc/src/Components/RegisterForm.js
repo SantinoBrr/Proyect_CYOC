@@ -60,7 +60,7 @@ function RegisterForm({ onSubmit }) {
                 />
             </div>
             <button type="submit" disabled={loading}>
-                {loading ? 'Cargando...' : 'Register'}
+                {loading ? 'Loading...' : 'Register'}
             </button>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </form>

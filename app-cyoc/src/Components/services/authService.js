@@ -15,8 +15,28 @@ export const authService = {
         }
     },
 
+    registerUser: (email, name, password) => {
+        return new Promise((resolve, reject) => {
+            if (email && name && password) {
+                console.log('User registered:', { email, name });
+                resolve({ success: true });
+            } else {
+                reject({ success: false, message: 'All fields are required' });
+            }
+        });
+    },
+
+    logout: () => {
+        currentUser = null;
+        console.log('User logged out');
+    },
+
     isAuthenticated: () => {
         return currentUser !== null;
+    },
+
+    getCurrentUser: () => {
+        return currentUser;
     }
 };
 

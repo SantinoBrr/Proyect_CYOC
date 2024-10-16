@@ -179,10 +179,18 @@ p {
     100% { transform: rotate(360deg); }
 }
 
-.login-to-register{
+.login-to-register {
     color: black;
     font-size: 16px;
+    transition: transform 0.3s ease;
 }
-.login-to-register a{
+
+.login-to-register a {
     color: black;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.login-to-register a:hover {
+    transform: scale(1.05);
 }

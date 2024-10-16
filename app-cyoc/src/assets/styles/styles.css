@@ -9,24 +9,68 @@ body {
     background-color: #282c34;
     height: 100%; 
 }
+
 .App-header {
     background-color: #282c34;
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 100px); 
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 10px;
     font-size: calc(10px + 2vmin);
     color: white;
     box-sizing: border-box; 
 }
+
+.navbar {
+    width: 100%;
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    align-items:end;
+}
+
+.footer {
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5px;
+    background-color:#1976d2;
+    font-size: 16px;
+    color: #333;
+    margin-top: auto; 
+}
+.footer p, a{
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer a:hover {
+    color: #b2b7bd;
+    transform: scale(1.03);
+}
+.App-header {
+    margin-top: 60px; 
+}
+.App {
+    padding-bottom: 60px;
+}
+
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
   
-  .login-page-container {
+.login-page-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,10 +86,10 @@ code {
     width: 100%;
 }
 
-.register-form{
-    display: flex;
-    
+.register-form {
+    display: flex;  
 }
+
 .create-car-page-container {
     display: flex;
     flex-direction: column;
@@ -84,8 +128,7 @@ label {
 
 input[type="email"],
 input[type="password"],
-input[type="text"]
- {
+input[type="text"] {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -102,16 +145,17 @@ input[type="text"]:focus {
     border-color: #007bff;
     outline: none;
 }
-.boton-create-car{
-    padding-top: 20px;
 
+.boton-create-car {
+    padding-top: 20px;
 }
+
 button {
-    padding: 10px;
+    padding: 15px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -131,15 +175,6 @@ p {
     color: #ff4d4d;
     font-size: 14px;
     text-align: center;
-}
-
-.navbar {
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    align-items:end;
 }
 
 .about-us {
@@ -164,6 +199,7 @@ p {
     line-height: 1.6;
     margin-bottom: 20px;
 }
+
 .loader {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
@@ -193,4 +229,20 @@ p {
 
 .login-to-register a:hover {
     transform: scale(1.05);
+}
+.content h1,h2{
+    color: #3498db;
+}
+.content p{
+    font-size: 16px;
+    color: #ffffff;
+}
+.content a{
+    display: inline-block;
+    transition: transform 0.3s ease;
+    text-decoration: underline;
+}
+.content a:hover {
+    color: #99b9dd;
+    transform: scale(1.03);
 }

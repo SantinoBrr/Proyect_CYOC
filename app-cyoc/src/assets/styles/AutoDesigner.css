@@ -63,7 +63,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 10px;
-    width: 80%;
+    width: 70%; /* Ajuste para que los botones sean más pequeños */
 }
 
 .option:hover .grid-container {
@@ -77,6 +77,27 @@ body {
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.grid-box.selected {
+    background-color: rgba(0, 255, 0, 0.5); /* Color verde para la opción seleccionada */
+}
+
+.wheel-box {
+    width: 100%;
+    padding-top: 80%; /* Hace que las cajas sean cuadradas pero más pequeñas */
+    position: relative;
+}
+
+.wheel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Para que las imágenes de las ruedas se ajusten */
 }
 
 #chasis { background-color: rgb(59, 59, 59); }
@@ -84,7 +105,41 @@ body {
 #motor { background-color: rgb(59, 59, 59); }
 #color { background-color: rgb(78, 78, 78); }
 
+.palette {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.color-box {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.color-picker {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.color-input {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100px;
+    display: block;
+}
+
 .p-selectpart {
-    color: #ffffff;
-    font-size: 2.5vh;
+    font-size: 1.5em;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
 }

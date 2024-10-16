@@ -34,7 +34,7 @@ function RegisterForm({ onSubmit }) {
         <form onSubmit={handleSubmit}>
             <div>
             <div>
-                <label>Name:</label>
+                <label>Username:</label>
                 <input
                     type="text"
                     value={name}

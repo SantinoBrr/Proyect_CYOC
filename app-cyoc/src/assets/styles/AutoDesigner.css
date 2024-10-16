@@ -46,6 +46,7 @@ body {
     color: white;
     cursor: pointer;
     padding: 20px;
+    position: relative;
 }
 
 .option:hover {
@@ -57,18 +58,25 @@ body {
     margin-bottom: 20px;
 }
 
-.option .description {
+.grid-container {
     display: none;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    font-size: 1.4em;
-    text-align: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
     width: 80%;
-    z-index: 1;
 }
 
-.option:hover .description {
-    display: block;
+.option:hover .grid-container {
+    display: grid;
+}
+
+.grid-box {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
 }
 
 #chasis { background-color: rgb(59, 59, 59); }
@@ -76,19 +84,7 @@ body {
 #motor { background-color: rgb(59, 59, 59); }
 #color { background-color: rgb(78, 78, 78); }
 
-.choose {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: gold;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-.choose:hover{
-    transform: scale(1.1);
-    background-color: rgb(189, 160, 0);
-}
-.p-selectpart{
-    color: #ffffffff;
+.p-selectpart {
+    color: #ffffff;
     font-size: 2.5vh;
 }

@@ -63,7 +63,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 10px;
-    width: 70%; /* Ajuste para que los botones sean más pequeños */
+    width: 70%;
 }
 
 .option:hover .grid-container {
@@ -82,12 +82,12 @@ body {
 }
 
 .grid-box.selected {
-    background-color: rgba(0, 255, 0, 0.5); /* Color verde para la opción seleccionada */
+    background-color: rgba(0, 255, 0, 0.5);
 }
 
 .wheel-box {
     width: 100%;
-    padding-top: 80%; /* Hace que las cajas sean cuadradas pero más pequeñas */
+    padding-top: 80%;
     position: relative;
 }
 
@@ -97,7 +97,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Para que las imágenes de las ruedas se ajusten */
+    object-fit: contain;
+}
+
+.chassis-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 #chasis { background-color: rgb(59, 59, 59); }

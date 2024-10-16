@@ -1,29 +1,28 @@
-let currentUser = null;
-
 export const authService = {
-    login: (email, password) => {
-        const defaultEmail = 'santinodarioscotton@gmail.com';
-        const defaultPassword = 'CYOC2024';
+    login: async (email, password) => {
+        const db = await dbPromise;
+        const user = await db.get('SELECT * FROM users WHERE email = ?', [email]);
 
-        if (email === defaultEmail && password === defaultPassword) {
-            currentUser = { email: defaultEmail, name: 'Test User' }; 
-            console.log('Login successful with default credentials');
-            return Promise.resolve({ success: true, email: defaultEmail, name: 'Test User' });
+        if (user && user.password === password) {
+            currentUser = { email: user.email, name: user.name }; 
+            console.log('Login successful');
+            return { success: true, email: user.email, name: user.name };
         } else {
             console.log('Invalid email or password');
-            return Promise.resolve({ success: false, message: 'Invalid email or password' });
+            return { success: false, message: 'Invalid email or password' };
         }
     },
 
-    registerUser: (email, name, password) => {
-        return new Promise((resolve, reject) => {
-            if (email && name && password) {
-                console.log('User registered:', { email, name });
-                resolve({ success: true });
-            } else {
-                reject({ success: false, message: 'All fields are required' });
-            }
-        });
+    registerUser: async (email, name, password) => {
+        const db = await dbPromise;
+        try {
+            await db.run('INSERT INTO users (email, name, password) VALUES (?, ?, ?)', [email, name, password]);
+            console.log('User registered:', { email, name });
+            return { success: true };
+        } catch (error) {
+            console.log('Error registering user:', error.message);
+            return { success: false, message: 'Email already in use or invalid data' };
+        }
     },
 
     logout: () => {

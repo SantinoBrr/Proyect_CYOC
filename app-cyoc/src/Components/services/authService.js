@@ -1,27 +1,49 @@
 export const authService = {
     login: async (email, password) => {
-        const db = await dbPromise;
-        const user = await db.get('SELECT * FROM users WHERE email = ?', [email]);
+        try {
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ correo: email, contraseña: password }),
+            });
 
-        if (user && user.password === password) {
-            currentUser = { email: user.email, name: user.name }; 
-            console.log('Login successful');
-            return { success: true, email: user.email, name: user.name };
-        } else {
-            console.log('Invalid email or password');
-            return { success: false, message: 'Invalid email or password' };
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Login successful');
+                return { success: true, email: data.email, name: data.name };
+            } else {
+                console.log('Login failed:', data.message);
+                return { success: false, message: data.message };
+            }
+        } catch (error) {
+            console.error('Error in login:', error);
+            return { success: false, message: error.message };
         }
     },
 
     registerUser: async (email, name, password) => {
-        const db = await dbPromise;
         try {
-            await db.run('INSERT INTO users (email, name, password) VALUES (?, ?, ?)', [email, name, password]);
-            console.log('User registered:', { email, name });
-            return { success: true };
+            const response = await fetch('http://localhost:3000/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ correo: email, nombre: name, contraseña: password }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                console.log('User registered:', { email, name });
+                return { success: true };
+            } else {
+                console.log('Error registering user:', data.message);
+                return { success: false, message: data.message };
+            }
         } catch (error) {
-            console.log('Error registering user:', error.message);
-            return { success: false, message: 'Email already in use or invalid data' };
+            console.error('Error registering user:', error);
+            return { success: false, message: error.message };
         }
     },
 

@@ -1,50 +1,50 @@
+// src/frontend/components/RegisterPage.js
 import React, { useState } from 'react';
 
-function Register() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const RegisterPage = () => {
+  const [nombre, setNombre] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [contraseña, setContraseña] = useState('');
+  const [mensaje, setMensaje] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const userData = {
-      username,
-      email,
-      password
-    };
-
-    // Aquí se envían los datos al servidor
-    fetch('http://localhost:3001/register', {
+    const response = await fetch('/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(userData),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
+      body: JSON.stringify({ nombre, correo, contraseña }),
     });
+
+    const data = await response.text();
+    setMensaje(data);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Username:</label>
-      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      
-      <label>Email:</label>
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      
-      <label>Password:</label>
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      
-      <button type="submit">Register</button>
-    </form>
+    <div>
+      <h1>Registro de Usuario</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Nombre:
+          <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+        </label>
+        <br />
+        <label>
+          Correo:
+          <input type="email" value={correo} onChange={(e) => setCorreo(e.target.value)} required />
+        </label>
+        <br />
+        <label>
+          Contraseña:
+          <input type="password" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required />
+        </label>
+        <br />
+        <button type="submit">Registrar</button>
+      </form>
+      {mensaje && <p>{mensaje}</p>}
+    </div>
   );
-}
+};
 
-export default Register;
+export default RegisterPage;

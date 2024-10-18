@@ -1,7 +1,21 @@
 {
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^6.26.2"
-  }
+    "react-router-dom": "^6.26.2",
+    "sqlite3": "^5.1.7"
+  },
+  "name": "proyect_cyoc",
+  "version": "1.0.0",
+  "description": "CYOC (Create Your Own Car) permite a **diseñadores automotrices** probar y visualizar combinaciones de modelos de vehículos, facilitando la creación y personalización de nuevos diseños.  \r El sitio también incluye un **foro** para que los diseñadores puedan compartir sus creaciones y recibir retroalimentación sobre su potencial y calidad.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

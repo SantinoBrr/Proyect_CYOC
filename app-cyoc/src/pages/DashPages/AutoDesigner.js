@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HuePicker } from 'react-color';
+import { useNavigate } from 'react-router-dom'; // Para la navegación
 import '../../assets/styles/AutoDesigner.css';
 
 // Importa las imágenes de las ruedas
@@ -34,6 +35,7 @@ function AutoDesigner() {
   const [selectedWheel, setSelectedWheel] = useState(null); // Estado para rueda seleccionada
   const [selectedChassis, setSelectedChassis] = useState(null); // Estado para chasis seleccionado
   const [selectedEngine, setSelectedEngine] = useState(null); // Estado para motor seleccionado
+  const navigate = useNavigate(); // Hook para navegación
 
   // Lista de imágenes de las ruedas
   const wheelImages = [rueda1, rueda2, rueda3, rueda4, rueda5, rueda6, rueda7, rueda8];
@@ -69,6 +71,24 @@ function AutoDesigner() {
   // Función para seleccionar un motor
   const handleEngineSelect = (index) => {
     setSelectedEngine(index); // Actualiza el motor seleccionado
+  };
+
+  // Función para verificar si todas las partes están seleccionadas
+  const allPartsSelected = selectedChassis !== null && selectedWheel !== null && selectedEngine !== null && color !== '';
+
+  // Función para manejar la navegación
+  const handleContinue = () => {
+    if (allPartsSelected) {
+      // Navegar a otra página y pasar los datos seleccionados como estado
+      navigate('/nextPage', {
+        state: {
+          selectedChassis,
+          selectedWheel,
+          selectedEngine,
+          selectedColor: color
+        }
+      });
+    }
   };
 
   return (
@@ -156,6 +176,13 @@ function AutoDesigner() {
           <p>Selected engine: {motores[selectedEngine].nombre}</p>
         )}
       </div>
+
+      {/* Mostrar el botón CONTINUE cuando todas las partes estén seleccionadas */}
+      {allPartsSelected && (
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <button onClick={handleContinue} className="continue-button">CONTINUE</button>
+        </div>
+      )}
     </div>
   );
 }

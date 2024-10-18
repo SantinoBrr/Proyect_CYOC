@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.final-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.vehicle-name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.vehicle-name {
+    padding: 10px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+.by-user {
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.audio-container {
+    margin-bottom: 20px;
+}
+
+.description-container {
+    margin-bottom: 20px;
+}
+
+.description {
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    font-size: 1.1em;
+}
+
+.parts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.part-box {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.part-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.launch-button {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+.launch-button.disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.launch-button.active {
+    background-color: gold;
+    color: black;
+    cursor: pointer;
+}

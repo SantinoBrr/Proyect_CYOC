@@ -44,6 +44,21 @@ function Navbar() {
                   <Button color='inherit' component={Link} to="/about">About us</Button>
                 </>
               )}
+              {location.pathname === '/LegalPage' && (
+                <>
+                  <Button color='inherit' component={Link} to="/about">About us</Button>
+                </>
+              )}
+              {location.pathname === '/privacy-policy' && (
+                <>
+                  <Button color='inherit' component={Link} to="/about">About us</Button>
+                </>
+              )}
+              {location.pathname === '/terms-of-service' && (
+                <>
+                  <Button color='inherit' component={Link} to="/about">About us</Button>
+                </>
+              )}
             </>
           )}
         </Box>

@@ -1,19 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import miImagen from './assets/images/Imagen_Rueda.png';
 import './App.css';
 import './assets/styles/styles.css';
 import Navbar from './Components/NavBar/NavBar';
+import Footer from './Components/Footer/Footer';
 import Routing from './Routing/Routing';
 
-
 function App() {
-
-
   return (
-    <div>
-      <Navbar/>
-      <Routing/>
+    <div className="app-container">
+      <Navbar />
+      <Routing />
+      <Footer />
     </div>
   );
 }

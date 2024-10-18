@@ -5,6 +5,9 @@ import AutoDesigner from '../pages/DashPages/AutoDesigner';
 import AboutUs from '../pages/DashPages/AboutUs';
 import HomePage from '../pages/DashPages/HomePage';
 import RegisterPage from '../pages/RegisterPage';
+import LegalPage from '../pages/DashPages/LegalPage';
+import TermsOfService from '../pages/DashPages/terms-of-service';
+import PrivacyPolicy from '../pages/DashPages/privacy-policy';
 
 function Routing() {
   return (
@@ -14,6 +17,9 @@ function Routing() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/create-car" element={<AutoDesigner />} />
       <Route path="/about" element={<AboutUs />} />
+      <Route path="/LegalPage" element={<LegalPage />} />
+      <Route path="/terms-of-service" element={<TermsOfService />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
     </Routes>
   );
 }

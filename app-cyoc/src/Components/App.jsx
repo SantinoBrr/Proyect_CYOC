@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState } from 'react';
-import RegisterPage from './components/RegisterPage';
-import LoginPage from './components/LoginPage';
+import RegisterPage from './components/register';
+import LoginPage from './components/login';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('register');

@@ -18,3 +18,4 @@ db.run(`CREATE TABLE IF NOT EXISTS usuarios (
 )`);
 
 module.exports = db;
+

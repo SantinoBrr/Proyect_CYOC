@@ -1,24 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-const db = require('./db');  // Asegúrate de que este archivo esté correctamente configurado
-const cors = require('cors'); // Agrega esta línea para permitir CORS
+const db = require('./db'); 
+const cors = require('cors'); 
 
-// Inicializa la aplicación de Express
+
 const app = express();
 
-// Middleware para habilitar CORS
-app.use(cors()); // Habilitar CORS
-// Middleware para analizar el cuerpo de las solicitudes POST
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-// Ruta de inicio para mostrar el formulario de registro
+app.use(cors()); 
+
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
+
+
 app.get('/', (req, res) => {
   res.send('Bienvenido a la API de registro e inicio de sesión.');
 });
 
-// Ruta para manejar el registro de usuarios
+
 app.post('/register', (req, res) => {
   const { nombre, correo, contraseña } = req.body;
 
@@ -47,7 +47,7 @@ app.post('/register', (req, res) => {
   });
 });
 
-// Ruta para manejar el inicio de sesión de usuarios
+
 app.post('/login', (req, res) => {
   const { correo, contraseña } = req.body;
 
@@ -60,6 +60,10 @@ app.post('/login', (req, res) => {
     }
 
     bcrypt.compare(contraseña, usuario.contraseña, (err, esIgual) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: 'Error al comparar la contraseña.' });
+      }
+
       if (esIgual) {
         res.json({ success: true, message: 'Inicio de sesión exitoso.', email: usuario.correo, name: usuario.nombre });
       } else {
@@ -69,8 +73,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-// Iniciar el servidor en el puerto 3000
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

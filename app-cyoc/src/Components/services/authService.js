@@ -1,7 +1,9 @@
+let currentUser = null; // Define currentUser aquí
+
 export const authService = {
     login: async (email, password) => {
         try {
-            const response = await fetch('http://localhost:3000/login', {
+            const response = await fetch('http://localhost:3001/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -12,6 +14,7 @@ export const authService = {
             const data = await response.json();
             if (response.ok) {
                 console.log('Login successful');
+                currentUser = { email: data.email, name: data.name }; // Actualiza currentUser
                 return { success: true, email: data.email, name: data.name };
             } else {
                 console.log('Login failed:', data.message);
@@ -25,7 +28,7 @@ export const authService = {
 
     registerUser: async (email, name, password) => {
         try {
-            const response = await fetch('http://localhost:3000/register', {
+            const response = await fetch('http://localhost:3001/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

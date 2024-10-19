@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "setup": "npm install express && npm install cors && npm install body-parser && npm install bcrypt && npm install sqlite3"
   },
   "eslintConfig": {
     "extends": [

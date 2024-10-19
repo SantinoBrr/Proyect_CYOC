@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: "Oswald", sans-serif;
+    font-family: "Oswald";
     font-optical-sizing: auto;
     font-weight: weight;
     font-style: normal;
@@ -13,16 +13,32 @@ body {
 .App-header {
     background-color: #282c34;
     width: 100%;
-    min-height: calc(100vh - 100px); 
+    min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding-top: 10px;
+    padding-bottom: 20px;
     font-size: calc(10px + 2vmin);
     color: white;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+.title_homepage {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #74d9ff;
+    margin-bottom: 10px;
+    animation: fadeIn 1.2s ease-in-out;
 }
 
+.h5_homepage {
+    font-size: 1.5rem;
+    color: #b0bec5;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+}
 .navbar {
     width: 100%;
     position: sticky;
@@ -150,26 +166,55 @@ input[type="text"]:focus {
     padding-top: 20px;
 }
 
-button {
-    padding: 15px;
+.boton-create-car button {
+    font-family: "Oswald";
+    padding: 15px 30px;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     border: none;
-    border-radius: 10px;
-    font-size: 16px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover {
+.boton-create-car button:hover {
     background-color: #0056b3;
     transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0, 123, 255, 0.4);
 }
 
-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
+.boton-create-car button:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
 }
+.button-form {
+    font-family: "Oswald";
+    padding: 10px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-form:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 123, 255, 0.4);
+}
+
+.button-form:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+}
+
 
 p {
     color: #ff4d4d;
@@ -177,29 +222,202 @@ p {
     text-align: center;
 }
 
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .about-us {
-    background-color: #ffffff;
+    background-color: #1c1e22;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin: 50px auto;
+    text-align: center;
+    color: #f1f1f1;
+    animation: fadeIn 1.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-title {
+    font-size: 3rem;
+    color: #3498db;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    animation: slideIn 1s ease-out forwards;
+}
+
+.about-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+    animation-delay: 0.3s;
+    color: #b0bec5;
+}
+
+.highlight {
+    color: #e67e22;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.highlight:hover {
+    transform: scale(1.1);
+    color: #ffab40;
+}
+
+.welcome-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #74d9ff;
+    animation: fadeIn 1.8s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+.legal-page {
     padding: 40px;
+    background-color: #1f1f1f;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: 60px auto;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.legal-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #e74c3c;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #f39c12;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.legal-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease;
+}
+
+.link {
+    color: #3498db;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-bottom: 1px dashed #3498db;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.link:hover {
+    color: #1abc9c;
+    border-bottom: 1px solid #1abc9c;
+}
+.terms-page {
+    padding: 40px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: 60px auto;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.terms-header {
     text-align: center;
 }
 
-.about-us h1 {
-    font-size: 2.5rem;
-    color: #333;
+.terms-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #e74c3c;
     margin-bottom: 20px;
+    animation: fadeInUp 1.5s ease-out;
 }
 
-.about-us p {
+.section-title {
+    font-size: 2rem;
+    color: #f39c12;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.terms-paragraph {
     font-size: 1.2rem;
-    color: #555;
     line-height: 1.6;
+    color: #dcdcdc;
     margin-bottom: 20px;
+    animation: fadeInUp 1s ease;
 }
 
+.privacy-page {
+    padding: 40px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: 60px auto;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.privacy-header {
+    text-align: center;
+}
+
+.privacy-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #f39c12;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.privacy-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease;
+}
 .loader {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
@@ -245,4 +463,22 @@ p {
 .content a:hover {
     color: #99b9dd;
     transform: scale(1.03);
+}
+.login-page-container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
 }

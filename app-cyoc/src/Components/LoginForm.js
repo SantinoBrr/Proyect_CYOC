@@ -53,7 +53,7 @@ function LoginForm() {
                     required
                 />
             </div>
-            <button type="submit" disabled={loading}>
+            <button className='button-form' type="submit" disabled={loading}>
                 {loading ? 'Loading...' : 'Login'}
             </button>
             {loading && <div className="loader"></div>}

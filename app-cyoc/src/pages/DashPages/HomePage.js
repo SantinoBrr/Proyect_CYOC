@@ -20,8 +20,8 @@ function HomePage() {
   return (
       <div className="App"> 
           <header className="App-header">
-              <h1>Welcome to CYOC</h1>
-              <h5>Create your own car here!</h5>
+              <h1 className='title_homepage'>Welcome to CYOC</h1>
+              <h5 className='h5_homepage'>Create your own car here!</h5>
               <img src={miImagen} className="App-logo" alt="Imagen de Rueda" />
               <div className='boton-create-car'>
                   <button onClick={handleCreateCarClick}>Create Car</button>

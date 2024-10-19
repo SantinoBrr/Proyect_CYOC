@@ -59,7 +59,7 @@ function RegisterForm({ onSubmit }) {
                     required
                 />
             </div>
-            <button type="submit" disabled={loading}>
+            <button className='button-form' type="submit" disabled={loading}>
                 {loading ? 'Loading...' : 'Register'}
             </button>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}

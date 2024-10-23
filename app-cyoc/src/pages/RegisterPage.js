@@ -23,7 +23,7 @@ function RegisterPage() {
         <div className='login-page'>
             <video autoPlay loop muted className="background-video">
                 <source src={require('../assets/videos/Fondo-Register.mp4')} type="video/mp4" />
-                Tu navegador no soporta el video.
+                Your browser does not support video.
             </video>
             <h2>Register Here</h2>
             <RegisterForm onSubmit={handleRegister} />

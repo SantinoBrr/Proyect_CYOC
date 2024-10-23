@@ -7,7 +7,7 @@ function LoginPage() {
         <div className='login-page-container'>
             <video autoPlay loop muted className="background-video">
                 <source src={require('../assets/videos/Fondo-Login.mp4')} type="video/mp4" />
-                Tu navegador no soporta el video.
+                Your browser does not support video.
             </video>
             <div className='login-page'>
                 <h2>Login Here</h2>

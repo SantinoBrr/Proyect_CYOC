@@ -6,13 +6,13 @@ body {
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #282c34;
     height: 100%; 
 }
 
 .App-header {
-    background-color: #282c34;
+    background-image: url('../images/backgroud-home.png');
     width: 100%;
+    height: auto;
     min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
@@ -24,6 +24,8 @@ body {
     color: white;
     box-sizing: border-box;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+
+
 }
 .title_homepage {
     font-size: 3rem;
@@ -77,9 +79,6 @@ body {
 }
 .App-header {
     margin-top: 60px; 
-}
-.App {
-    padding-bottom: 60px;
 }
 
 code {

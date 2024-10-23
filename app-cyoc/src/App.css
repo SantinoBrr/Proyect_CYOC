@@ -12,7 +12,6 @@ html, body {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-  animation: App-logo-spin infinite 20s linear, fadeIn 2s ease-in-out;
 }
 .App-logo-aboutus{
     height: 10vmin;

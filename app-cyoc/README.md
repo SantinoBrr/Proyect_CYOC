@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Proyect CYOC 🚗
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CYOC (Create Your Own Car) permite a **diseñadores automotrices** probar y visualizar combinaciones de modelos de vehículos, facilitando la creación y personalización de nuevos diseños.  
+El sitio también incluye un **foro** para que los diseñadores puedan compartir sus creaciones y recibir retroalimentación sobre su potencial y calidad.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Instrucciones de Uso 📖
 
-### `npm start`
+Para iniciar la aplicación, sigue estos pasos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Instalar dependencias**:  
+    Si no tienes instalados los `node_modules`, ejecuta el siguiente comando en tu terminal:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    ```bash
+    npm install
+    ```
 
-### `npm test`
+2. **Iniciar la aplicación**:  
+    Luego de instalar las dependencias, inicia la aplicación con el siguiente comando (procura estar en la carpeta `app-cyoc`):
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```bash
+    npm start
+    ```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Notas adicionales
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Asegúrate de estar utilizando la versión correcta de `Node.js` y `npm`, ya que algunas dependencias pueden no funcionar correctamente con versiones anteriores.
+### Para actualizar Node.js:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Usar Node Version Manager (NVM)** (recomendado):  
+   Si tienes NVM instalado, puedes actualizar Node.js fácilmente con el siguiente comando:
 
-### `npm run eject`
+    ```bash
+    nvm install node  # Esto instalará la última versión estable
+    nvm use node      # Esto hará que la nueva versión sea la activa
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Si no usas NVM**, puedes descargar la última versión desde la [página oficial de Node.js](https://nodejs.org/).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Para actualizar npm:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Para actualizar npm a la última versión, ejecuta el siguiente comando en tu terminal:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm install -g npm
+```

@@ -80,7 +80,7 @@ function AutoDesigner() {
   const handleContinue = () => {
     if (allPartsSelected) {
       // Navegar a otra página y pasar los datos seleccionados como estado
-      navigate('/nextPage', {
+      navigate('/create-car/final-page', {
         state: {
           selectedChassis,
           selectedWheel,
@@ -180,7 +180,7 @@ function AutoDesigner() {
       {/* Mostrar el botón CONTINUE cuando todas las partes estén seleccionadas */}
       {allPartsSelected && (
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
-          <button onClick={handleContinue} className="continue-button">CONTINUE</button>
+          <button onClick={handleContinue} className="continue-button">CONTINUE</button>-
         </div>
       )}
     </div>

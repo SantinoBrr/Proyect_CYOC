@@ -2,34 +2,42 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const db = require('./db'); 
-const cors = require('cors'); 
-
+const cors = require('cors');
+const path = require('path');
+const fs = require('fs'); // Agregar el módulo fs para manejar archivos
 
 const app = express();
 
+// Función para escribir en el archivo de logs
+const logMessage = (message) => {
+  const log = `${new Date().toISOString()} - ${message}\n`;
+  fs.appendFile('server.log', log, (err) => {
+    if (err) {
+      console.error('Error al escribir en el archivo de logs:', err);
+    }
+  });
+};
 
-app.use(cors()); 
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true })); 
-
-
-app.get('/', (req, res) => {
-  res.send('Bienvenido a la API de registro e inicio de sesión.');
-});
-
-
+// Rutas de la API
 app.post('/register', (req, res) => {
   const { nombre, correo, contraseña } = req.body;
 
   if (!nombre || !correo || !contraseña) {
-    return res.status(400).json({ success: false, message: 'Por favor, completa todos los campos.' });
+    const message = 'Por favor, completa todos los campos.';
+    logMessage(message); // Log del mensaje
+    return res.status(400).json({ success: false, message });
   }
 
   const saltRounds = 10;
   bcrypt.hash(contraseña, saltRounds, (err, hash) => {
     if (err) {
-      return res.status(500).json({ success: false, message: 'Error al hashear la contraseña.' });
+      const message = 'Error al hashear la contraseña.';
+      logMessage(message); // Log del mensaje
+      return res.status(500).json({ success: false, message });
     }
 
     db.run(`INSERT INTO usuarios (nombre, correo, contraseña) VALUES (?, ?, ?)`,
@@ -37,43 +45,69 @@ app.post('/register', (req, res) => {
       (err) => {
         if (err) {
           if (err.message.includes('UNIQUE')) {
-            return res.status(400).json({ success: false, message: 'El correo ya está registrado.' });
+            const message = 'El correo ya está registrado.';
+            logMessage(message); // Log del mensaje
+            return res.status(400).json({ success: false, message });
           }
-          return res.status(500).json({ success: false, message: 'Error al registrar el usuario.' });
+          const message = 'Error al registrar el usuario.';
+          logMessage(message); // Log del mensaje
+          return res.status(500).json({ success: false, message });
         }
-        res.json({ success: true, message: 'Usuario registrado con éxito.' });
+        const message = 'Usuario registrado con éxito.';
+        logMessage(message); // Log del mensaje
+        res.json({ success: true, message });
       }
     );
   });
 });
-
 
 app.post('/login', (req, res) => {
   const { correo, contraseña } = req.body;
 
   db.get('SELECT * FROM usuarios WHERE correo = ?', [correo], (err, usuario) => {
     if (err) {
-      return res.status(500).json({ success: false, message: 'Error en el servidor.' });
+      const message = 'Error en el servidor.';
+      logMessage(message); // Log del mensaje
+      return res.status(500).json({ success: false, message });
     }
     if (!usuario) {
-      return res.status(400).json({ success: false, message: 'Usuario no encontrado.' });
+      const message = 'Usuario no encontrado.';
+      logMessage(message); // Log del mensaje
+      return res.status(400).json({ success: false, message });
     }
 
     bcrypt.compare(contraseña, usuario.contraseña, (err, esIgual) => {
       if (err) {
-        return res.status(500).json({ success: false, message: 'Error al comparar la contraseña.' });
+        const message = 'Error al comparar la contraseña.';
+        logMessage(message); // Log del mensaje
+        return res.status(500).json({ success: false, message });
       }
 
       if (esIgual) {
-        res.json({ success: true, message: 'Inicio de sesión exitoso.', email: usuario.correo, name: usuario.nombre });
+        const message = 'Inicio de sesión exitoso.';
+        logMessage(`Usuario ${usuario.correo} ha iniciado sesión correctamente.`); // Log exitoso
+        res.json({ success: true, message, email: usuario.correo, name: usuario.nombre });
       } else {
-        res.status(401).json({ success: false, message: 'Contraseña incorrecta.' });
+        const message = 'Contraseña incorrecta.';
+        logMessage(message); // Log del mensaje
+        res.status(401).json({ success: false, message });
       }
     });
   });
 });
 
+// Configura Express para servir archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, '../build')));
+
+// Maneja cualquier ruta que no coincida con tus API y devuelve el archivo HTML de React
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build', 'asset-manifest.json'));
+});
+
+// Inicia el servidor
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  const message = `Servidor escuchando en http://localhost:${PORT}`;
+  logMessage(message); // Log del inicio del servidor
+  console.log(message);
 });

@@ -19,10 +19,9 @@ function AboutUs() {
                 We believe that sharing knowledge and experiences leads to better designs and fosters a supportive environment for creativity.
             </p>
             <p className="about-paragraph">
-                The CYOC project is brought to life by a dedicated team of four developers: <span className="highlight">Santino</span>,
-                <span className="highlight">Tobias</span>, <span className="highlight">Matias</span>, and <span className="highlight">Nahuel</span>. 
-                Each of us brings unique skills and perspectives to the table. Santino focuses on front-end development, Tobias handles back-end,
-                Matias specializes in user experience (UX) design, and Nahuel oversees project management.
+                The CYOC project is brought to life by a dedicated team of four developers: <span className="highlight">Santino</span>, <span className="highlight">Tobias</span>, <span className="highlight">Matias</span>, and <span className="highlight">Nahuel</span>. 
+                Each of us brings unique skills and perspectives to the table. Santino and Tobias focuses on front-end development and oversees project management, Nahuel handles back-end,
+                Matias specializes in user experience (UX) design.
             </p>
             <p className="about-paragraph">
                 We are all passionate about technology and committed to creating a platform that inspires creativity and innovation. 

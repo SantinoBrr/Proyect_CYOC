@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import RegisterForm from '../Components/RegisterForm';
 import { authService } from '../Components/services/authService';
 
@@ -26,6 +27,9 @@ function RegisterPage() {
             </video>
             <h2>Register Here</h2>
             <RegisterForm onSubmit={handleRegister} />
+            <p className='login-to-register'>
+                Do you already have an account? <Link to="/login">Login here</Link>
+                </p>
         </div>
         </div>
     );

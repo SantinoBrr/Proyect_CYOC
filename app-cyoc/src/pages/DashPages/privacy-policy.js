@@ -41,7 +41,7 @@ function PrivacyPolicy() {
 
                     <h2 className="section-title">Contact Us</h2>
                     <p className="privacy-paragraph">
-                        If you have any questions about this policy, please contact us at <a href="mailto:supportCYOC@gmail.com" target="_blank" rel="noopener noreferrer" className="link">supportCYOC@gmail.com</a>.
+                        If you have any questions about this policy, please contact us at: <a href="mailto:supportCYOC@gmail.com" target="_blank" rel="noopener noreferrer" className="link">supportCYOC@gmail.com</a>.
                     </p>
                 </div>
             </header>

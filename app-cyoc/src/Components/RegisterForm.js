@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { authService } from './services/authService';
 import { useNavigate } from 'react-router-dom';
+import '../assets/styles/styles.css';
 
 function RegisterForm({ onSubmit }) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -30,9 +32,12 @@ function RegisterForm({ onSubmit }) {
             });
     };
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(prev => !prev);
+    };
+
     return (
         <form onSubmit={handleSubmit}>
-            <div>
             <div>
                 <label>Name:</label>
                 <input
@@ -42,6 +47,7 @@ function RegisterForm({ onSubmit }) {
                     required
                 />
             </div>
+            <div>
                 <label>Email:</label>
                 <input
                     type="email"
@@ -53,11 +59,20 @@ function RegisterForm({ onSubmit }) {
             <div>
                 <label>Password:</label>
                 <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
+                <div className="show-password-container">
+                    <input
+                        type="checkbox"
+                        id="show-password"
+                        checked={showPassword}
+                        onChange={togglePasswordVisibility}
+                    />
+                    <label htmlFor="show-password">Mostrar contraseña</label>
+                </div>
             </div>
             <button className='button-form' type="submit" disabled={loading}>
                 {loading ? 'Loading...' : 'Register'}

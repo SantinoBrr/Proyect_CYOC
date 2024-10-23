@@ -3,10 +3,10 @@ import authService from './services/authService';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/styles.css';
 
-
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -33,6 +33,10 @@ function LoginForm() {
         }, 1000);
     };
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -46,12 +50,23 @@ function LoginForm() {
             </div>
             <div>
                 <label>Password:</label>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
+                <div>
+                    <input
+                        type={showPassword ? 'text' : 'password'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="show-password-container">
+                    <input
+                        type="checkbox"
+                        id="show-password"
+                        checked={showPassword}
+                        onChange={togglePasswordVisibility}
+                    />
+                    <label htmlFor="show-password">Mostrar contraseña</label>
+                </div>
             </div>
             <button className='button-form' type="submit" disabled={loading}>
                 {loading ? 'Loading...' : 'Login'}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { authService } from './services/authService'; // Asegúrate de que la ruta sea correcta
+import { authService } from './services/authService';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/styles.css';
 
-function RegisterForm() {
+function RegisterForm({ onSubmit }) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -12,26 +12,24 @@ function RegisterForm() {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
         setErrorMessage('');
 
-        // Llama al servicio de autenticación para registrar el usuario
-        const response = await authService.registerUser(email, name, password);
-
-        setLoading(false);
-        if (response.success) {
-            // Redirige a la página de inicio de sesión si el registro fue exitoso
-            navigate('/login');
-        } else {
-            // Muestra el mensaje de error en caso de fallo en el registro
-            setErrorMessage(response.message);
-        }
-    };
-
-    const togglePasswordVisibility = () => {
-        setShowPassword(prev => !prev);
+        authService.registerUser(email, name, password)
+            .then(response => {
+                setLoading(false);
+                if (response.success) {
+                    navigate('/login');
+                } else {
+                    setErrorMessage(response.message);
+                }
+            })
+            .catch(error => {
+                setLoading(false);
+                setErrorMessage(error.message);
+            });
     };
 
     const togglePasswordVisibility = () => {

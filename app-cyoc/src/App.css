@@ -14,7 +14,11 @@ html, body {
   pointer-events: none;
   animation: App-logo-spin infinite 20s linear, fadeIn 2s ease-in-out;
 }
-
+.App-logo-aboutus{
+    height: 10vmin;
+    pointer-events: none;
+    animation: App-logo-spin infinite 20s linear, fadeIn 2s ease-in-out;
+}
 .App-link {
   color: #61dafb;
 }

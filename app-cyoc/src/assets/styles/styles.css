@@ -254,6 +254,7 @@ p {
     animation: fadeIn 1.2s ease-in-out;
     position: relative;
     overflow: hidden;
+    padding: 50px 50px 25px 50px;
 }
 
 .animated-title {

@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../assets/styles/styles.css';
+import miImagen from '../../assets/images/Imagen_Rueda.png';
+import '../../App.css';
 
 function AboutUs() {
     return (
@@ -33,6 +35,7 @@ function AboutUs() {
                 Together, we can redefine the future of automotive design! We invite you to explore the platform, engage with our community, and unleash your creativity.
             </p>
             <p className="welcome-text">Welcome to CYOC!</p>
+            <img src={miImagen} className="App-logo-aboutus" alt="Imagen de Rueda" />
         </div>
     );
 }

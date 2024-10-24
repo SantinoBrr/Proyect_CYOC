@@ -11,6 +11,8 @@ export const authService = {
                 body: JSON.stringify({ correo: email, contraseña: password }),
             });
 
+            console.log(response); // Verificar la respuesta del servidor
+
             const data = await response.json();
             if (response.ok) {
                 console.log('Login successful');

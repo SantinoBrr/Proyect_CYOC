@@ -26,7 +26,6 @@ function Navbar() {
     >
       <List>
         <ListItem 
-          button 
           component={Link} 
           to="/search-models" 
           className="menu-option"
@@ -41,7 +40,6 @@ function Navbar() {
           <ListItemText primary="Search Models" />
         </ListItem>
         <ListItem 
-          button 
           component={Link} 
           to="/my-models" 
           className="menu-option"

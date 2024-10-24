@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { authService } from '../../Components/services/authService';
+import authService from '../../Components/services/authService';
 import miImagen from '../../assets/videos/Gif-auto-home.gif';
 import '../../App.css';
 import '../../assets/styles/styles.css';

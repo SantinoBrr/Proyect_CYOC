@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Box, Button, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import authService from '../services/authService';
@@ -7,6 +7,7 @@ import '../../assets/styles/styles.css';
 
 function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const isAuthenticated = authService.isAuthenticated(); 
   const [drawerOpen, setDrawerOpen] = useState(false);
   
@@ -15,6 +16,11 @@ function Navbar() {
       return;
     }
     setDrawerOpen(open);
+  };
+
+  const handleLogout = () => {
+    authService.logout();
+    navigate('/');
   };
 
   const drawerContent = (
@@ -80,7 +86,12 @@ function Navbar() {
           <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end' }}>
             <Button color='inherit' component={Link} to="/" className="navbar-button">Home</Button>
             {isAuthenticated ? (
-              <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+              <>
+                {location.pathname !== '/about' && (
+                  <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                )}
+                <Button color='inherit' onClick={handleLogout} className="navbar-button">Logout</Button>
+              </>
             ) : (
               <>
                 {location.pathname === '/' && (

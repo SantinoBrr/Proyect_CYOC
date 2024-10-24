@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import RegisterForm from '../Components/RegisterForm';
-import { authService } from '../Components/services/authService';
+import authService from '../Components/services/authService';
 
 function RegisterPage() {
     const handleRegister = (email, name, password) => {
@@ -20,17 +20,17 @@ function RegisterPage() {
 
     return (
         <div className='login-page-container'>
-        <div className='login-page'>
-            <video autoPlay loop muted className="background-video">
-                <source src={require('../assets/videos/Fondo-Register.mp4')} type="video/mp4" />
-                Your browser does not support video.
-            </video>
-            <h2>Register Here</h2>
-            <RegisterForm onSubmit={handleRegister} />
-            <p className='login-to-register'>
-                Do you already have an account? <Link to="/login">Login here</Link>
+            <div className='login-page'>
+                <video autoPlay loop muted className="background-video">
+                    <source src={require('../assets/videos/Fondo-Register.mp4')} type="video/mp4" />
+                    Your browser does not support video.
+                </video>
+                <h2>Register Here</h2>
+                <RegisterForm onSubmit={handleRegister} />
+                <p className='login-to-register'>
+                    Do you already have an account? <Link to="/login">Login here</Link>
                 </p>
-        </div>
+            </div>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { authService } from './services/authService';
+import authService from './services/authService';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/styles.css';
 
@@ -7,7 +7,7 @@ function RegisterForm({ onSubmit }) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
+    const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();

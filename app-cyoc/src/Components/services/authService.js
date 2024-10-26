@@ -5,9 +5,20 @@ const authService = {
         const token = localStorage.getItem('token');
         const email = localStorage.getItem('email');
         const name = localStorage.getItem('name');
+        const loginTime = localStorage.getItem('loginTime');
+
+
         if (token && email && name) {
-            currentUser = { email, name };
-            console.log('Session loaded:', currentUser);
+            const now = new Date().getTime();
+            const hoursSinceLogin = (now - loginTime) / (1000 * 60 * 60);
+
+            if (hoursSinceLogin >= 24) {
+                console.log('Session expired due to inactivity');
+                authService.logout(); 
+            } else {
+                currentUser = { email, name };
+                console.log('Session loaded:', currentUser);
+            }
         }
     },
 
@@ -27,6 +38,7 @@ const authService = {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('email', data.email);
                 localStorage.setItem('name', data.name);
+                localStorage.setItem('loginTime', new Date().getTime());
                 console.log('Login successful');
                 return { success: true, email: data.email, name: data.name };
             } else {
@@ -69,6 +81,7 @@ const authService = {
         localStorage.removeItem('token');
         localStorage.removeItem('email');
         localStorage.removeItem('name');
+        localStorage.removeItem('loginTime');
     },
 
     isAuthenticated: () => {

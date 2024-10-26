@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import authService from '../Components/services/authService'; // Asegúrate de que la ruta sea correcta
+import authService from '../Components/services/authService';
 
 const UserContext = createContext();
 
@@ -9,14 +9,14 @@ export const UserProvider = ({ children }) => {
     const login = async (credentials) => {
         const response = await authService.login(credentials.email, credentials.password);
         if (response.success) {
-            setUser({ email: response.email, name: response.name }); // Solo actualiza si el login es exitoso
+            setUser({ email: response.email, name: response.name });
         }
-        return response; // Devuelve la respuesta para manejarla en el LoginForm
+        return response;
     };
 
     const logout = () => {
         authService.logout();
-        setUser(null); // Elimina el usuario del estado
+        setUser(null);
     };
 
     const isAuthenticated = () => {
@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const currentUser = authService.getCurrentUser(); // Verifica la sesión al cargar la aplicación
+        const currentUser = authService.getCurrentUser();
         if (currentUser) {
             setUser(currentUser);
         }

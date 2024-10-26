@@ -1,7 +1,16 @@
-// authService.js
-let currentUser = null; // Define currentUser aquí
+let currentUser = null; 
 
 const authService = {
+    initialize: () => {
+        const token = localStorage.getItem('token');
+        const email = localStorage.getItem('email');
+        const name = localStorage.getItem('name');
+        if (token && email && name) {
+            currentUser = { email, name };
+            console.log('Session loaded:', currentUser);
+        }
+    },
+
     login: async (email, password) => {
         try {
             const response = await fetch('http://localhost:3001/login', {
@@ -12,13 +21,13 @@ const authService = {
                 body: JSON.stringify({ correo: email, contraseña: password }),
             });
 
-            console.log(response); // Verificar la respuesta del servidor
-
             const data = await response.json();
             if (response.ok) {
+                currentUser = { email: data.email, name: data.name };
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('email', data.email);
+                localStorage.setItem('name', data.name);
                 console.log('Login successful');
-                currentUser = { email: data.email, name: data.name }; // Actualiza currentUser
-                localStorage.setItem('token', data.token); // Guarda el token si lo tienes
                 return { success: true, email: data.email, name: data.name };
             } else {
                 console.log('Login failed:', data.message);
@@ -55,18 +64,22 @@ const authService = {
     },
 
     logout: () => {
-        currentUser = null; // Eliminar el usuario actual
+        currentUser = null;
         console.log('User logged out');
-        localStorage.removeItem('token'); // Limpia el token si lo tienes
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('name');
     },
 
     isAuthenticated: () => {
-        return currentUser !== null;
+        return !!localStorage.getItem('token');
     },
 
     getCurrentUser: () => {
         return currentUser;
     }
 };
+
+authService.initialize(); // Cargar la sesión al iniciar la aplicación
 
 export default authService;

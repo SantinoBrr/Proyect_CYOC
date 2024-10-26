@@ -39,7 +39,7 @@ function RegisterForm({ onSubmit }) {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Name:</label>
+                <label>Username:</label>
                 <input
                     type="text"
                     value={name}
@@ -71,7 +71,7 @@ function RegisterForm({ onSubmit }) {
                         checked={showPassword}
                         onChange={togglePasswordVisibility}
                     />
-                    <label htmlFor="show-password">Mostrar contraseña</label>
+                    <label htmlFor="show-password">Show password</label>
                 </div>
             </div>
             <button className='button-form' type="submit" disabled={loading}>

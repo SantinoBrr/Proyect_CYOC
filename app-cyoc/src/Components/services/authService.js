@@ -1,4 +1,4 @@
-let currentUser = null; 
+let currentUser = null;
 
 const authService = {
     initialize: () => {
@@ -31,11 +31,11 @@ const authService = {
                 return { success: true, email: data.email, name: data.name };
             } else {
                 console.log('Login failed:', data.message);
-                return { success: false, message: data.message };
+                return { success: false, message: data.message || 'Login failed' };
             }
         } catch (error) {
             console.error('Error in login:', error);
-            return { success: false, message: error.message };
+            return { success: false, message: error.message || 'Network error' };
         }
     },
 
@@ -55,11 +55,11 @@ const authService = {
                 return { success: true };
             } else {
                 console.log('Error registering user:', data.message);
-                return { success: false, message: data.message };
+                return { success: false, message: data.message || 'Registration failed' };
             }
         } catch (error) {
             console.error('Error registering user:', error);
-            return { success: false, message: error.message };
+            return { success: false, message: error.message || 'Network error' };
         }
     },
 

@@ -80,6 +80,6 @@ const authService = {
     }
 };
 
-authService.initialize(); // Cargar la sesión al iniciar la aplicación
+authService.initialize();
 
 export default authService;

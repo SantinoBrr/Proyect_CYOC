@@ -4,14 +4,19 @@ import './assets/styles/styles.css';
 import Navbar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
 import Routing from './Routing/Routing';
+import { UserProvider } from './Context/UserContext';
+
+
 
 function App() {
   return (
-    <div className="app-container">
-      <Navbar />
-      <Routing />
-      <Footer />
-    </div>
+    <UserProvider>
+      <div className="app-container">
+        <Navbar />
+        <Routing />
+        <Footer />
+      </div>
+    </UserProvider>
   );
 }
 

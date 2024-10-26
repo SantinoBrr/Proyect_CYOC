@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Box, Button, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import authService from '../services/authService';
+import { useUser } from '../../Context/UserContext';
 import '../../assets/styles/styles.css';
 
 function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const isAuthenticated = authService.isAuthenticated(); 
+  const { user, logout } = useUser();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  
+
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -19,7 +19,7 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    authService.logout();
+    logout();
     navigate('/');
   };
 
@@ -31,6 +31,11 @@ function Navbar() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
+        {user && (
+          <ListItem>
+            <ListItemText primary={`Hi, ${user.name}`} sx={{ color: 'white' }} />
+          </ListItem>
+        )}
         <ListItem 
           component={Link} 
           to="/search-models" 
@@ -83,9 +88,9 @@ function Navbar() {
             {drawerContent}
           </Drawer>
 
-          <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end' }}>
+          <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
             <Button color='inherit' component={Link} to="/" className="navbar-button">Home</Button>
-            {isAuthenticated ? (
+            {user ? (
               <>
                 {location.pathname !== '/about' && (
                   <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>

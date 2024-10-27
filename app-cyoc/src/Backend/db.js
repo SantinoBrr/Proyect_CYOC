@@ -1,6 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
 
-
 const db = new sqlite3.Database('./users.db', (err) => {
   if (err) {
     console.error('Error al conectar con la base de datos:', err.message);
@@ -9,7 +8,6 @@ const db = new sqlite3.Database('./users.db', (err) => {
   }
 });
 
-
 db.run(`CREATE TABLE IF NOT EXISTS usuarios (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nombre TEXT NOT NULL,
@@ -17,6 +15,16 @@ db.run(`CREATE TABLE IF NOT EXISTS usuarios (
   contraseña TEXT NOT NULL
 )`);
 
+db.run(`CREATE TABLE IF NOT EXISTS modelos (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  nombre TEXT NOT NULL,
+  chasis TEXT,
+  ruedas TEXT,
+  motor TEXT,
+  color TEXT,
+  creador_id INTEGER,
+  FOREIGN KEY (creador_id) REFERENCES usuarios(id)
+)`);
 
 const addUser = (nombre, correo, contraseña, callback) => {
   db.run(
@@ -27,7 +35,6 @@ const addUser = (nombre, correo, contraseña, callback) => {
     }
   );
 };
-
 
 const deleteUserByName = (nombre, callback) => {
   db.run(
@@ -48,7 +55,6 @@ const deleteUserByName = (nombre, callback) => {
   );
 };
 
-
 const getAllUsers = (callback) => {
   db.all(`SELECT * FROM usuarios`, [], (err, rows) => {
     if (err) {
@@ -59,7 +65,6 @@ const getAllUsers = (callback) => {
     }
   });
 };
-
 
 const getUserByEmail = (correo, callback) => {
   db.get(`SELECT * FROM usuarios WHERE correo = ?`, [correo], (err, row) => {
@@ -72,11 +77,61 @@ const getUserByEmail = (correo, callback) => {
   });
 };
 
+const addModel = (nombre, chasis, ruedas, motor, color, creador_id, callback) => {
+  db.run(
+    `INSERT INTO modelos (nombre, chasis, ruedas, motor, color, creador_id) VALUES (?, ?, ?, ?, ?, ?)`,
+    [nombre, chasis, ruedas, motor, color, creador_id],
+    function (err) {
+      callback(err, this.lastID);
+    }
+  );
+};
+
+const getAllModels = (callback) => {
+  db.all(`SELECT * FROM modelos`, [], (err, rows) => {
+    if (err) {
+      console.error('Error al obtener los modelos:', err.message);
+      callback(err);
+    } else {
+      callback(null, rows);
+    }
+  });
+};
+
+const getModelsByCreator = (creador_id, callback) => {
+  db.all(`SELECT * FROM modelos WHERE creador_id = ?`, [creador_id], (err, rows) => {
+    if (err) {
+      console.error('Error al obtener los modelos del usuario:', err.message);
+      callback(err);
+    } else {
+      callback(null, rows);
+    }
+  });
+};
+
+const deleteModelById = (id, callback) => {
+  db.run(`DELETE FROM modelos WHERE id = ?`, [id], function (err) {
+    if (err) {
+      console.error('Error al eliminar el modelo:', err.message);
+      callback(err);
+    } else if (this.changes === 0) {
+      console.log('No se encontró ningún modelo con ese ID.');
+      callback(null, 'No se encontró ningún modelo con ese ID.');
+    } else {
+      console.log(`Modelo con ID ${id} eliminado.`);
+      callback(null, 'Modelo eliminado');
+    }
+  });
+};
 
 module.exports = {
   db,
   addUser,
   deleteUserByName,
   getAllUsers,
-  getUserByEmail
+  getUserByEmail,
+  addModel,
+  getAllModels,
+  getModelsByCreator,
+  deleteModelById
 };

@@ -1,39 +1,26 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
 
-const GuardarModelo = ({ usuarioId, configuracion }) => {
-  const [nombre, setNombre] = useState('');
-
-  const guardarModelo = () => {
-    axios.post('/guardar-modelo', {
-      usuario_id: usuarioId,
-      nombre: nombre,
-      chasis: configuracion.chasis,
-      ruedas: configuracion.ruedas,
-      motor: configuracion.motor,
-      color: configuracion.color,
-    })
-    .then(response => {
-      if (response.data.success) {
-        alert('Modelo guardado con éxito');
-      }
-    })
-    .catch(error => {
-      console.error('Error al guardar el modelo:', error);
-    });
-  };
-
-  return (
-    <div>
-      <input
-        type="text"
-        placeholder="Nombre del modelo"
-        value={nombre}
-        onChange={(e) => setNombre(e.target.value)}
-      />
-      <button onClick={guardarModelo}>Guardar Modelo</button>
-    </div>
-  );
+const openDatabase = async () => {
+  return open({
+    filename: './database.db',
+    driver: sqlite3.Database,
+  });
 };
 
-export default GuardarModelo;
+export const guardarModelo = async (usuario_id, creator_id, nombre, chasis, ruedas, motor, color) => {
+  const db = await openDatabase();
+  await db.run(`
+    INSERT INTO modelos (usuario_id, creator_id, nombre, chasis, ruedas, motor, color)
+    VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    [usuario_id, creator_id, nombre, chasis, ruedas, motor, color]
+  );
+  await db.close();
+};
+
+export const obtenerModelosPorUsuario = async (usuario_id) => {
+  const db = await openDatabase();
+  const modelos = await db.all('SELECT * FROM modelos WHERE usuario_id = ?', [usuario_id]);
+  await db.close();
+  return modelos;
+};

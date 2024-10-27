@@ -9,7 +9,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/login', { // Apuntar al backend
+      const response = await fetch('http://localhost:3000/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -21,9 +21,9 @@ const LoginPage = () => {
         throw new Error('Error en el inicio de sesión');
       }
 
-      // Procesar la respuesta como JSON
+     
       const data = await response.json();
-      setMensaje(data.message); // Mostrar el mensaje de respuesta (éxito o error)
+      setMensaje(data.message); 
     } catch (error) {
       setMensaje('Hubo un problema con el inicio de sesión');
       console.error('Error:', error);

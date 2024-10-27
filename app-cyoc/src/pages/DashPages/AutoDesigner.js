@@ -4,17 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import '../../assets/styles/AutoDesigner.css';
 
 
-import rueda1 from '../../assets/images/ruedas_modelos/rueda1.jpg';
-import rueda2 from '../../assets/images/ruedas_modelos/rueda2.jpg';
-import rueda3 from '../../assets/images/ruedas_modelos/rueda3.jpg';
-import rueda4 from '../../assets/images/ruedas_modelos/rueda4.jpg';
-import rueda5 from '../../assets/images/ruedas_modelos/rueda5.jpg';
-import rueda6 from '../../assets/images/ruedas_modelos/rueda6.jpg';
-import rueda7 from '../../assets/images/ruedas_modelos/rueda7.jpg';
-import rueda8 from '../../assets/images/ruedas_modelos/rueda8.jpg';
+import rueda1 from '../../assets/images/ruedas_modelos/rueda1.png';
+import rueda2 from '../../assets/images/ruedas_modelos/rueda2.png';
+import rueda3 from '../../assets/images/ruedas_modelos/rueda3.png';
+import rueda4 from '../../assets/images/ruedas_modelos/rueda4.png';
 
 
 import dodge from '../../assets/images/chasis_modelos/dodge.jpg';
+import audi from '../../assets/images/chasis_modelos/audi.jpg';
+import mercedes from '../../assets/images/chasis_modelos/mercedes.jpg';
+import mazda from '../../assets/images/chasis_modelos/mazda.jpg';
+import bmw from '../../assets/images/chasis_modelos/bmw.jpg';
+import mustang from '../../assets/images/chasis_modelos/mustang.jpg';
+import r34 from '../../assets/images/chasis_modelos/r34.jpg';
+
+
 
 
 const motores = [
@@ -38,10 +42,10 @@ function AutoDesigner() {
   const navigate = useNavigate(); 
 
 
-  const wheelImages = [rueda1, rueda2, rueda3, rueda4, rueda5, rueda6, rueda7, rueda8];
+  const wheelImages = [rueda1, rueda2, rueda3, rueda4];
 
 
-  const chassisImages = [dodge, dodge, dodge, dodge, dodge, dodge, dodge, dodge];
+  const chassisImages = [dodge, audi, mercedes, mazda, bmw, mustang, r34, dodge];
 
 
   const handlePartSelect = (part) => {
@@ -114,18 +118,19 @@ function AutoDesigner() {
 
         <div className="option" id="llanta" onMouseEnter={() => handlePartSelect('wheels')}>
           <div className="label">WHEEL</div>
-          <div className="grid-container">
+            <div className="wheel-grid-container">
             {wheelImages.map((image, index) => (
-              <button
-                key={index}
-                className={`grid-box wheel-box ${selectedWheel === index ? 'selected' : ''}`}
-                onClick={() => handleWheelSelect(index)}
-              >
-                <img src={image} alt={`Wheel ${index + 1}`} className="wheel-image" />
-              </button>
-            ))}
-          </div>
+            <button
+            key={index}
+            className={`grid-box wheel-box ${selectedWheel === index ? 'selected' : ''}`}
+            onClick={() => handleWheelSelect(index)}
+            >
+          <img src={image} alt={`Wheel ${index + 1}`} className="wheel-image" />
+        </button>
+        ))}
         </div>
+        </div>
+
 
         <div className="option" id="motor" onMouseEnter={() => handlePartSelect('engine')}>
           <div className="label">ENGINE</div>

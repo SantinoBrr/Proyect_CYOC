@@ -35,6 +35,18 @@ body {
     width: 100%;
 }
 
+.wheel-grid-container {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    width: 50%;
+}
+
+.option:hover .wheel-grid-container {
+    display: grid;
+}
+
 .option {
     flex: 1;
     display: flex;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import '../../assets/styles/finalstep.css';
+import '../../assets/styles/FinalStep.css';
 
 function FinalStep() {
   const location = useLocation();

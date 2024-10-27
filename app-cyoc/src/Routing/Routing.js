@@ -9,6 +9,7 @@ import LegalPage from '../pages/DashPages/LegalPage';
 import TermsOfService from '../pages/DashPages/terms-of-service';
 import PrivacyPolicy from '../pages/DashPages/privacy-policy';
 import NotFoundPage from '../pages/NotFoundPage';
+import SearchModels from '../pages/DashPages/search-models';
 
 function Routing() {
   return (
@@ -21,6 +22,7 @@ function Routing() {
       <Route path="/LegalPage" element={<LegalPage />} />
       <Route path="/terms-of-service" element={<TermsOfService />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/search-models" element={<SearchModels />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

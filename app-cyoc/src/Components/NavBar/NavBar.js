@@ -8,7 +8,7 @@ import '../../assets/styles/styles.css';
 function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, logout } = useUser(); // Mantenemos la lógica de usuario
+  const { user, logout } = useUser();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -19,8 +19,8 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    logout(); // Lógica de cierre de sesión
-    navigate('/'); // Redirigir a la página principal
+    logout();
+    navigate('/');
   };
 
   const drawerContent = (
@@ -95,7 +95,7 @@ function Navbar() {
                 {location.pathname !== '/about' && (
                   <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
                 )}
-                <Button color='inherit' onClick={handleLogout} className="navbar-button">Logout</Button> {/* Botón de Logout */}
+                <Button color='inherit' onClick={handleLogout} className="navbar-button">Logout</Button>
               </>
             ) : (
               <>
@@ -120,6 +120,41 @@ function Navbar() {
                 )}
                 {location.pathname === '/create-car' && (
                   <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                )}
+                {location.pathname === '/search-models' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
+                )}
+                {location.pathname === '/LegalPage' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
+                )}
+                {location.pathname === '/privacy-policy' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
+                )}
+                {location.pathname === '/terms-of-service' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
+                )}
+                {location.pathname === '/my-models' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
                 )}
               </>
             )}

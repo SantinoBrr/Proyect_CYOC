@@ -17,6 +17,7 @@ import mazda from '../../assets/images/chasis_modelos/mazda.jpg';
 import bmw from '../../assets/images/chasis_modelos/bmw.jpg';
 import mustang from '../../assets/images/chasis_modelos/mustang.jpg';
 import r34 from '../../assets/images/chasis_modelos/r34.jpg';
+import ferrari from '../../assets/images/chasis_modelos/ferrari.jpg';
 
 
 
@@ -45,7 +46,7 @@ function AutoDesigner() {
   const wheelImages = [rueda1, rueda2, rueda3, rueda4];
 
 
-  const chassisImages = [dodge, audi, mercedes, mazda, bmw, mustang, r34, dodge];
+  const chassisImages = [dodge, audi, mercedes, mazda, bmw, mustang, r34, ferrari];
 
 
   const handlePartSelect = (part) => {

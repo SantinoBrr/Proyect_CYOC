@@ -4,19 +4,19 @@ import axios from 'axios';
 import '../../assets/styles/styles.css';
 import '../../App.css';
 import { useUser } from '../../Context/UserContext';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
 
 function SearchModels() {
   const { isAuthenticated } = useUser();
-  const navigate = useNavigate(); // Crea la instancia de useNavigate
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [models, setModels] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
 
   const handleSearch = async () => {
     if (!isAuthenticated()) {
-      navigate('/Login'); // Redirige a /Login si no está autenticado
-      return; // Detiene la ejecución si no está autenticado
+      navigate('/Login');
+      return;
     }
 
     setHasSearched(true);
@@ -25,6 +25,12 @@ function SearchModels() {
       setModels(response.data);
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
     }
   };
 
@@ -51,6 +57,7 @@ function SearchModels() {
         label="Model Name"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
         variant="outlined"
         sx={{
           width: '100%',
@@ -93,7 +100,7 @@ function SearchModels() {
           textTransform: 'uppercase',
           cursor: 'pointer',
           transition: 'transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease',
-          width: '100%', // Mantiene el estilo de ancho completo
+          width: '100%',
           marginBottom: 2,
           '&:hover': {
             backgroundColor: '#0056b3',

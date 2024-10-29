@@ -20,9 +20,9 @@ Para iniciar la aplicación, sigue estos pasos:
     Luego de instalar las dependencias, inicia la aplicación con el siguiente comando (procura estar en la carpeta `app-cyoc`):
 
     ```bash
-    npm start
+    cd /app-cyoc # Esto te movera a la carpeta la cual tiene el proyecto
+    npm start # Este comando inicia el proyecto react
     ```
-
 ---
 
 ## Notas adicionales

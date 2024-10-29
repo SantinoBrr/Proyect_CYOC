@@ -1,6 +1,6 @@
 # Proyect CYOC 🚗
 
-CYOC (Create Your Own Car) permite a **diseñadores automotrices** probar y visualizar combinaciones de modelos de vehículos, facilitando la creación y personalización de nuevos diseños.  
+CYOC (Create Your Own Car) permite a **amantes de los autos** probar y visualizar combinaciones de modelos de vehículos, facilitando la creación y personalización de nuevos diseños.  
 El sitio también incluye un **foro** para que los diseñadores puedan compartir y recibir opiniones sobre los modelos.
 
 ---

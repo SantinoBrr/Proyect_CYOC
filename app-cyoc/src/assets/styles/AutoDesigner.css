@@ -97,6 +97,10 @@ body {
     background-color: rgba(0, 255, 0, 0.5);
 }
 
+.green-highlight {
+    border: 2px solid rgba(0, 255, 0, 0.5);
+  }
+
 .wheel-box {
     width: 100%;
     padding-top: 80%;

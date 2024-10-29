@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../assets/styles/FinalStep.css';
 
 function FinalStep() {
   const location = useLocation();
+  const navigate = useNavigate();
   const selectedParts = location.state || {};
 
   const [vehicleName, setVehicleName] = useState('');
@@ -15,7 +16,13 @@ function FinalStep() {
   };
 
   const handleLaunchClick = () => {
-    alert('Vehicle launched successfully!');
+    navigate('/create-car/preview', {
+      state: {
+        ...selectedParts,
+        vehicleName,
+        description
+      }
+    });
   };
 
   return (
@@ -37,16 +44,15 @@ function FinalStep() {
       <div className="form-group">
         <label htmlFor="description">Description:</label>
         <textarea
-        id="description"
-        className="description-textarea"
-        value={description}
-        onChange={(e) => {
-          setDescription(e.target.value);
-          handleInputChange();
-        }}
+          id="description"
+          className="description-textarea"
+          value={description}
+          onChange={(e) => {
+            setDescription(e.target.value);
+            handleInputChange();
+          }}
         />
       </div>
-
 
       <div className="final-grid-container">
         <div className="final-grid-item">
@@ -56,7 +62,7 @@ function FinalStep() {
           Selected Wheel: {selectedParts.selectedWheel + 1 || 'No wheel selected'}
         </div>
         <div className="final-grid-item">
-          Selected Chassis: Chassis {selectedParts.selectedChassis + 1 || 'No chassis selected'}
+          Selected Chassis: {selectedParts.selectedChassis || 'No chassis selected'}
         </div>
         <div className="final-grid-item">
           Selected Color: 

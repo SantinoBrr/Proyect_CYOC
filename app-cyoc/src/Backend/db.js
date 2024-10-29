@@ -17,5 +17,13 @@ db.run(`CREATE TABLE IF NOT EXISTS usuarios (
   contraseña TEXT NOT NULL
 )`);
 
-module.exports = db;
+// Crear la tabla de modelos si no existe
+db.run(`CREATE TABLE IF NOT EXISTS models (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  description TEXT,
+  user_id INTEGER,
+  FOREIGN KEY(user_id) REFERENCES usuarios(id)
+)`);
 
+module.exports = db;

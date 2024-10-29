@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Box, Button, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import authService from '../services/authService';
+import { useUser } from '../../Context/UserContext';
 import '../../assets/styles/styles.css';
 
 function Navbar() {
   const location = useLocation();
-  const isAuthenticated = authService.isAuthenticated(); 
+  const navigate = useNavigate();
+  const { user, logout } = useUser();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  
+
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     setDrawerOpen(open);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
   };
 
   const drawerContent = (
@@ -25,6 +31,11 @@ function Navbar() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
+        {user && (
+          <ListItem>
+            <ListItemText primary={`Hi, ${user.name}`} sx={{ color: 'white' }} />
+          </ListItem>
+        )}
         <ListItem 
           component={Link} 
           to="/search-models" 
@@ -77,10 +88,15 @@ function Navbar() {
             {drawerContent}
           </Drawer>
 
-          <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end' }}>
+          <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
             <Button color='inherit' component={Link} to="/" className="navbar-button">Home</Button>
-            {isAuthenticated ? (
-              <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+            {user ? (
+              <>
+                {location.pathname !== '/about' && (
+                  <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                )}
+                <Button color='inherit' onClick={handleLogout} className="navbar-button">Logout</Button>
+              </>
             ) : (
               <>
                 {location.pathname === '/' && (
@@ -104,6 +120,41 @@ function Navbar() {
                 )}
                 {location.pathname === '/create-car' && (
                   <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                )}
+                {location.pathname === '/search-models' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
+                )}
+                {location.pathname === '/LegalPage' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
+                )}
+                {location.pathname === '/privacy-policy' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
+                )}
+                {location.pathname === '/terms-of-service' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
+                )}
+                {location.pathname === '/my-models' && (
+                  <>
+                    <Button color='inherit' component={Link} to="/about" className="navbar-button">About us</Button>
+                    <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
+                    <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                  </>
                 )}
               </>
             )}

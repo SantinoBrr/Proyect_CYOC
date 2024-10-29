@@ -50,21 +50,22 @@ body {
     align-items:end;
 }
 
-.footer {
-    width: 100%;
-    position: relative;
-    z-index: 1000;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.5px;
-    background-color:#1976d2;
-    font-size: 16px;
-    color: #333;
-    margin-top: auto; 
-}
+    .footer {
+        margin-top: auto;
+        width: 100%;
+        position: relative;
+        z-index: 1000;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0.5px;
+        background-color:#1976d2;
+        font-size: 16px;
+        color: #333;
+        margin-top: auto; 
+    }
 .footer p, a{
     font-size: 16px;
     color: white;
@@ -80,7 +81,11 @@ body {
 .App-header {
     margin-top: 60px; 
 }
-
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

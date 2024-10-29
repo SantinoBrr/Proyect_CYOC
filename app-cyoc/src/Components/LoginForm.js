@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import authService from './services/authService'; 
+import { useUser } from '../Context/UserContext'; // Asegúrate de que la ruta sea correcta
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/styles.css';
 
@@ -10,27 +10,25 @@ function LoginForm() {
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const { login } = useUser(); // Obtener la función de login del contexto
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         setErrorMessage('');
 
-        setTimeout(() => {
-            authService.login(email, password)
-                .then(response => {
-                    setLoading(false);
-                    if (response.success) {
-                        navigate('/create-car'); 
-                    } else {
-                        setErrorMessage(response.message);
-                    }
-                })
-                .catch(error => {
-                    setLoading(false);
-                    setErrorMessage(error.message);
-                });
-        }, 1000);
+        try {
+            const response = await login({ email, password }); // Llama al login desde el contexto
+            setLoading(false);
+            if (response.success) {
+                navigate('/create-car'); 
+            } else {
+                setErrorMessage(response.message); // Muestra el mensaje de error
+            }
+        } catch (error) {
+            setLoading(false);
+            setErrorMessage(error.message); // Maneja errores inesperados
+        }
     };
 
     const togglePasswordVisibility = () => {
@@ -65,7 +63,7 @@ function LoginForm() {
                         checked={showPassword}
                         onChange={togglePasswordVisibility}
                     />
-                    <label htmlFor="show-password">Mostrar contraseña</label>
+                    <label htmlFor="show-password">Show password</label>
                 </div>
             </div>
             <button className='button-form' type="submit" disabled={loading}>

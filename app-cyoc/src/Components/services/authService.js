@@ -1,6 +1,27 @@
-let currentUser = null; // Define currentUser aquí
+let currentUser = null;
 
-export const authService = {
+const authService = {
+    initialize: () => {
+        const token = localStorage.getItem('token');
+        const email = localStorage.getItem('email');
+        const name = localStorage.getItem('name');
+        const loginTime = localStorage.getItem('loginTime');
+
+
+        if (token && email && name) {
+            const now = new Date().getTime();
+            const hoursSinceLogin = (now - loginTime) / (1000 * 60 * 60);
+
+            if (hoursSinceLogin >= 24) {
+                console.log('Session expired due to inactivity');
+                authService.logout(); 
+            } else {
+                currentUser = { email, name };
+                console.log('Session loaded:', currentUser);
+            }
+        }
+    },
+
     login: async (email, password) => {
         try {
             const response = await fetch('http://localhost:3001/login', {
@@ -11,20 +32,22 @@ export const authService = {
                 body: JSON.stringify({ correo: email, contraseña: password }),
             });
 
-            console.log(response); // Verificar la respuesta del servidor
-
             const data = await response.json();
             if (response.ok) {
+                currentUser = { email: data.email, name: data.name };
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('email', data.email);
+                localStorage.setItem('name', data.name);
+                localStorage.setItem('loginTime', new Date().getTime());
                 console.log('Login successful');
-                currentUser = { email: data.email, name: data.name }; // Actualiza currentUser
                 return { success: true, email: data.email, name: data.name };
             } else {
                 console.log('Login failed:', data.message);
-                return { success: false, message: data.message };
+                return { success: false, message: data.message || 'Login failed' };
             }
         } catch (error) {
             console.error('Error in login:', error);
-            return { success: false, message: error.message };
+            return { success: false, message: error.message || 'Network error' };
         }
     },
 
@@ -44,26 +67,32 @@ export const authService = {
                 return { success: true };
             } else {
                 console.log('Error registering user:', data.message);
-                return { success: false, message: data.message };
+                return { success: false, message: data.message || 'Registration failed' };
             }
         } catch (error) {
             console.error('Error registering user:', error);
-            return { success: false, message: error.message };
+            return { success: false, message: error.message || 'Network error' };
         }
     },
 
     logout: () => {
         currentUser = null;
         console.log('User logged out');
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('name');
+        localStorage.removeItem('loginTime');
     },
 
     isAuthenticated: () => {
-        return currentUser !== null;
+        return !!localStorage.getItem('token');
     },
 
     getCurrentUser: () => {
         return currentUser;
     }
 };
+
+authService.initialize();
 
 export default authService;

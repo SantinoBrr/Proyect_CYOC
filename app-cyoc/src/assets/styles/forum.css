@@ -1,0 +1,109 @@
+
+.forum-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f6f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .forum-container h1 {
+    color: #007bbf;
+    font-size: 2rem;
+  }
+
+  .forum-container p {
+    color: #333;
+    font-size: 1.2rem;
+  }
+.foro-main {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .nuevo-tema-button {
+    background-color: #007bbf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .nuevo-tema-button:hover {
+    background-color: #005f8c;
+  }
+
+  .centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .nuevo-tema-form {
+    display: flex;
+    flex-direction: column;
+    align-items: auto;
+    max-width: 70%;
+    width: 475px;
+    padding: 20px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+ 
+  
+
+  .nuevo-tema-form h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  .nuevo-tema-form form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nuevo-tema-form input,
+  .nuevo-tema-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .nuevo-tema-form button {
+    background-color: #007bbf;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .nuevo-tema-form button:hover {
+    background-color: #005f8c;
+  }
+  .textarea {
+    
+    width: 100%;
+    max-width: 1000px;
+    height: 200px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    box-sizing: border-box;
+  }

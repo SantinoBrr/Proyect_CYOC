@@ -11,7 +11,10 @@ import PrivacyPolicy from '../pages/DashPages/privacy-policy';
 import NotFoundPage from '../pages/NotFoundPage';
 import SearchModels from '../pages/DashPages/search-models';
 import FinalStep from '../pages/DashPages/FinalStep';
-import PreView from '../pages/DashPages/PreView'
+import PreView from '../pages/DashPages/PreView';
+import ForoMain from '../pages/forum/ForoMain';
+import Tema from '../pages/forum/Tema';
+import NuevoTemaForm from '../pages/forum/NuevoTemaForm'
 
 function Routing() {
   return (
@@ -28,6 +31,9 @@ function Routing() {
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/search-models" element={<SearchModels />} />
       <Route path="*" element={<NotFoundPage />} />
+      <Route path="/forum" element={<ForoMain />} />
+      <Route path="/tema/:id" element={<Tema />} />
+      <Route path="/new-theme" element={<NuevoTemaForm />} />
     </Routes>
   );
 }

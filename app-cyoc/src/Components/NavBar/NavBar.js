@@ -90,12 +90,14 @@ function Navbar() {
 
           <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
             <Button color='inherit' component={Link} to="/" className="navbar-button">Home</Button>
+            <Button color='inherit' component={Link} to="/forum" className="navbar-button">Foro</Button>
             {location.pathname === '/about' ? (
               <>
                 {!user ? (
                   <>
                     <Button color='inherit' component={Link} to="/login" className="navbar-button">Sign in</Button>
                     <Button color='inherit' component={Link} to="/register" className="navbar-button">Sign Up</Button>
+                    
                   </>
                 ) : (
                   <Button color='inherit' onClick={handleLogout} className="navbar-button">Logout</Button>

@@ -38,7 +38,7 @@ function AutoDesigner() {
   const navigate = useNavigate(); 
 
   const wheelImages = [rueda1, rueda2, rueda3, rueda4];
-  const chassisNames = ['Dodge', 'Audi', 'Mercedes', 'Mazda', 'BMW', 'Mustang', 'R34', 'Ferrari'];
+  const chassisNames = ['dodge', 'audi', 'mercedes', 'mazda', 'bmw', 'mustang', 'r34', 'ferrari'];
   const chassisImages = [dodge, audi, mercedes, mazda, bmw, mustang, r34, ferrari];
 
   const handlePartSelect = (part) => {

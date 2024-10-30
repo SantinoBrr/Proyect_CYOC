@@ -1,0 +1,52 @@
+p{
+    font-size: 20px;
+    color: black;
+}
+.preview-container {
+    padding: 100px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    background-color: gray;
+}
+.preview-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+}
+  
+.vehicle-details {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: black;
+}
+.car-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.car-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.finish-button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 24px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.finish-button:hover {
+    background-color: darkgray;
+}

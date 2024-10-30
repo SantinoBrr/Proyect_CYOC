@@ -6,6 +6,7 @@ import AboutUs from '../pages/DashPages/AboutUs';
 import HomePage from '../pages/DashPages/HomePage';
 import RegisterPage from '../pages/RegisterPage';
 import FinalStep from '../pages/DashPages/FinalStep';
+import PreView from '../pages/DashPages/PreView'
 
 function Routing() {
   return (
@@ -15,6 +16,7 @@ function Routing() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/create-car" element={<AutoDesigner />} />
       <Route path="/create-car/final-page" element={<FinalStep />} />
+      <Route path="/create-car/PreView" element={<PreView />} />
       <Route path="/about" element={<AboutUs />} />
     </Routes>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HuePicker } from 'react-color';
+import { HexColorPicker } from 'react-colorful';
 import { useNavigate } from 'react-router-dom';
 import '../../assets/styles/AutoDesigner.css';
 
@@ -32,10 +32,10 @@ function AutoDesigner() {
   const [selectedPart, setSelectedPart] = useState(null);
   const [color, setColor] = useState('#ffffff');
   const [showColorPicker, setShowColorPicker] = useState(false);
-  const [selectedWheel, setSelectedWheel] = useState(null); 
-  const [selectedChassis, setSelectedChassis] = useState(null); 
+  const [selectedWheel, setSelectedWheel] = useState(null);
+  const [selectedChassis, setSelectedChassis] = useState(null);
   const [selectedEngine, setSelectedEngine] = useState(null);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const wheelImages = [rueda1, rueda2, rueda3, rueda4];
   const chassisNames = ['dodge', 'audi', 'mercedes', 'mazda', 'bmw', 'mustang', 'r34', 'ferrari'];
@@ -46,7 +46,7 @@ function AutoDesigner() {
   };
 
   const handleColorChange = (color) => {
-    setColor(color.hex);
+    setColor(color);
   };
 
   const handleInputChange = (e) => {
@@ -62,7 +62,7 @@ function AutoDesigner() {
   };
 
   const handleEngineSelect = (index) => {
-    setSelectedEngine(motores[index]); 
+    setSelectedEngine(motores[index]);
   };
 
   const allPartsSelected = selectedChassis !== null && selectedWheel !== null && selectedEngine !== null && color !== '';
@@ -90,30 +90,30 @@ function AutoDesigner() {
           <div className="label">CHASSIS</div>
           <div className="grid-container">
             {chassisImages.map((image, index) => (
-            <button
-            key={index}
-            className={`grid-box ${selectedChassis === chassisNames[index] ? 'selected green-highlight' : ''}`}
-            onClick={() => handleChassisSelect(index)}
-            >
-            <img src={image} alt={`Chassis ${chassisNames[index]}`} className="chassis-image" />
-            </button>
+              <button
+                key={index}
+                className={`grid-box ${selectedChassis === chassisNames[index] ? 'selected green-highlight' : ''}`}
+                onClick={() => handleChassisSelect(index)}
+              >
+                <img src={image} alt={`Chassis ${chassisNames[index]}`} className="chassis-image" />
+              </button>
             ))}
           </div>
         </div>
 
         <div className="option" id="llanta" onMouseEnter={() => handlePartSelect('wheels')}>
           <div className="label">WHEEL</div>
-            <div className="wheel-grid-container">
+          <div className="wheel-grid-container">
             {wheelImages.map((image, index) => (
-            <button
-            key={index}
-            className={`grid-box wheel-box ${selectedWheel === index ? 'selected' : ''}`}
-            onClick={() => handleWheelSelect(index)}
-            >
-          <img src={image} alt={`Wheel ${index + 1}`} className="wheel-image" />
-        </button>
-        ))}
-        </div>
+              <button
+                key={index}
+                className={`grid-box wheel-box ${selectedWheel === index ? 'selected' : ''}`}
+                onClick={() => handleWheelSelect(index)}
+              >
+                <img src={image} alt={`Wheel ${index + 1}`} className="wheel-image" />
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="option" id="motor" onMouseEnter={() => handlePartSelect('engine')}>
@@ -130,6 +130,7 @@ function AutoDesigner() {
             ))}
           </div>
         </div>
+        
         <div 
           className="option" 
           id="color" 
@@ -139,7 +140,11 @@ function AutoDesigner() {
           <div className="label">COLOR</div>
           {showColorPicker && (
             <div className="color-picker">
-              <HuePicker color={color} onChange={handleColorChange} />
+              <HexColorPicker 
+                color={color} 
+                onChange={handleColorChange} 
+                style={{ width: '100%', height: '200px' }} // Estilo modificado
+              />
               <input
                 type="text"
                 value={color}
@@ -163,7 +168,7 @@ function AutoDesigner() {
 
       {allPartsSelected && (
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
-          <button onClick={handleContinue} className="continue-button">CONTINUE</button>-
+          <button onClick={handleContinue} className="continue-button">CONTINUE</button>
         </div>
       )}
     </div>

@@ -143,7 +143,7 @@ body {
 }
 
 .color-picker {
-    position: absolute;
+    position: relative;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 10px;
     border-radius: 5px;
@@ -167,7 +167,7 @@ body {
 }
 
 .continue-button {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -183,4 +183,7 @@ body {
   .continue-button:hover {
     background-color: #45a049;
   }
-  
+  .react-colorful {
+    width: 100%; /* Cambia el ancho a 100% */
+    height: 200px; /* Mantén la altura */
+}

@@ -75,6 +75,7 @@ function PreView() {
                 <p>Chasis seleccionado: {selectedChassis}</p>
                 <p>Rueda seleccionada: {selectedWheel + 1}</p>
                 <p>Motor seleccionado: {selectedEngine?.nombre}</p> 
+                <p>Color seleccionado: {selectedColor} </p>
                 <div className="audio-player">
                   <audio controls>
                     <source src={selectedEngine.sonido} type="audio/mpeg" />

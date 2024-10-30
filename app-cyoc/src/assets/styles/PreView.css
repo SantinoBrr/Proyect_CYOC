@@ -21,7 +21,11 @@ p{
     font-size: 30px;
     margin-bottom: 20px;
     color: black;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
+
 .car-image-container {
     display: flex;
     justify-content: center;

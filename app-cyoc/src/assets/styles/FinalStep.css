@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.final-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.vehicle-name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.vehicle-name {
+    padding: 10px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+.by-user {
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.audio-container {
+    margin-bottom: 20px;
+}
+
+.description-container {
+    margin-bottom: 20px;
+}
+
+.description {
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    font-size: 1.1em;
+}
+
+.description-textarea {
+    width: 100%;
+    height: 200px;
+    resize: none;
+    margin: 0 auto;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+
+.parts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.part-box {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.part-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.launch-button {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+.launch-button.disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.launch-button.active {
+    background-color: gold;
+    color: black;
+    cursor: pointer;
+}
+
+.final-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .final-grid-item {
+    background-color: rgb(78, 78, 78);
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+  
+  .launch-button {
+    margin-top: 20px;
+  }
+  
+  .audio-player {
+    margin-top: 20px;
+  }
+  .color-square {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+  }
+  

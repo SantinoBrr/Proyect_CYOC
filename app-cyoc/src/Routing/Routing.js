@@ -10,6 +10,8 @@ import TermsOfService from '../pages/DashPages/terms-of-service';
 import PrivacyPolicy from '../pages/DashPages/privacy-policy';
 import NotFoundPage from '../pages/NotFoundPage';
 import SearchModels from '../pages/DashPages/search-models';
+import FinalStep from '../pages/DashPages/FinalStep';
+import PreView from '../pages/DashPages/PreView'
 
 function Routing() {
   return (
@@ -18,6 +20,8 @@ function Routing() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/create-car" element={<AutoDesigner />} />
+      <Route path="/create-car/final-page" element={<FinalStep />} />
+      <Route path="/create-car/PreView" element={<PreView />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/LegalPage" element={<LegalPage />} />
       <Route path="/terms-of-service" element={<TermsOfService />} />

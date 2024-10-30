@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useUser } from '../Context/UserContext'; // Asegúrate de que la ruta sea correcta
+import { useUser } from '../Context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/styles.css';
 
@@ -10,7 +10,7 @@ function LoginForm() {
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const { login } = useUser(); // Obtener la función de login del contexto
+    const { login } = useUser();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,16 +18,16 @@ function LoginForm() {
         setErrorMessage('');
 
         try {
-            const response = await login({ email, password }); // Llama al login desde el contexto
+            const response = await login({ email, password });
             setLoading(false);
             if (response.success) {
                 navigate('/create-car'); 
             } else {
-                setErrorMessage(response.message); // Muestra el mensaje de error
+                setErrorMessage(response.message); 
             }
         } catch (error) {
             setLoading(false);
-            setErrorMessage(error.message); // Maneja errores inesperados
+            setErrorMessage(error.message);
         }
     };
 

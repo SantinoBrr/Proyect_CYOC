@@ -20,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Registro de usuarios
 app.post('/register', (req, res) => {
   const { nombre, correo, contraseña } = req.body;
 
@@ -58,6 +59,7 @@ app.post('/register', (req, res) => {
   });
 });
 
+// Inicio de sesión
 app.post('/login', (req, res) => {
   const { correo, contraseña } = req.body;
 
@@ -83,7 +85,7 @@ app.post('/login', (req, res) => {
       if (esIgual) {
         const message = 'Inicio de sesión exitoso.';
         logMessage(`Usuario ${usuario.correo} ha iniciado sesión correctamente.`);
-        res.json({ success: true, message, email: usuario.correo, name: usuario.nombre });
+        res.json({ success: true, message, email: usuario.correo, name: usuario.nombre, userID: usuario.id });
       } else {
         const message = 'Contraseña incorrecta.';
         logMessage(message); 
@@ -93,6 +95,25 @@ app.post('/login', (req, res) => {
   });
 });
 
+// Obtener modelos del usuario
+app.get('/api/MyModels', (req, res) => {
+  const userID = req.query.userID;
+
+  if (!userID) {
+    return res.status(400).json({ success: false, message: 'Se requiere el userID.' });
+  }
+
+  db.all('SELECT * FROM models WHERE user_id = ?', [userID], (err, rows) => {
+    if (err) {
+      const message = 'Error al buscar los modelos.';
+      logMessage(message);
+      return res.status(500).json({ success: false, message });
+    }
+    res.json(rows);
+  });
+});
+
+// Buscar modelos por nombre
 app.get('/api/models', (req, res) => {
   const { name } = req.query;
 
@@ -110,9 +131,31 @@ app.get('/api/models', (req, res) => {
   });
 });
 
+// Agregar un nuevo modelo
+app.post('/api/models', (req, res) => {
+  const { name, description, user_id, chasis, rueda, motor, color } = req.body;
+
+  if (!name || !user_id || !chasis || !rueda || !motor || !color) {
+    return res.status(400).json({ success: false, message: 'Faltan datos requeridos para el modelo.' });
+  }
+
+  db.run(`INSERT INTO models (name, description, user_id, chasis, rueda, motor, color) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    [name, description, user_id, chasis, rueda, motor, color],
+    function(err) {
+      if (err) {
+        const message = 'Error al guardar el modelo.';
+        logMessage(message);
+        return res.status(500).json({ success: false, message });
+      }
+      res.json({ success: true, message: 'Modelo guardado con éxito', modelId: this.lastID });
+    }
+  );
+});
+
+// Servir archivos estáticos
 app.use(express.static(path.join(__dirname, '../build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build', 'asset-manifest.json'));
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3001;

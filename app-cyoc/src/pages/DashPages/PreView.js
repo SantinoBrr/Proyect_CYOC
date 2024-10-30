@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../assets/styles/PreView.css';
 
 import audiRueda1 from '../../assets/images/final_models/audi_rueda1.png';
@@ -51,25 +51,29 @@ const carImages = {
     mercedes: [mercedesRueda1, mercedesRueda2, mercedesRueda3, mercedesRueda4],
     mustang: [mustangRueda1, mustangRueda2, mustangRueda3, mustangRueda4],
     r34: [r34Rueda1, r34Rueda2, r34Rueda3, r34Rueda4],
-  };
-
-
+};
 
 function PreView() {
     const location = useLocation();
+    const navigate = useNavigate();
     const { selectedChassis, selectedWheel, selectedEngine, selectedColor, vehicleName, description } = location.state || {};
-  
+
     console.log("Chasis seleccionado:", selectedChassis);
     console.log("Rueda seleccionada:", selectedWheel);
-  
+
     const carImage = carImages[selectedChassis] && selectedWheel >= 0 && selectedWheel < carImages[selectedChassis].length 
         ? carImages[selectedChassis][selectedWheel] 
         : null;
-  
-        return (
-            <div className="preview-container" style={{ backgroundColor: 'gray' }}>
-              <h1 className="preview-title">Vista Previa del Vehículo</h1>
-              <div className="vehicle-details">
+
+    const handleFinish = () => {
+   
+        navigate('/');
+    };
+
+    return (
+        <div className="preview-container" style={{ backgroundColor: 'gray' }}>
+            <h1 className="preview-title">Vista Previa del Vehículo</h1>
+            <div className="vehicle-details">
                 <h2>{vehicleName}</h2>
                 <p>{description}</p>
                 <p>Chasis seleccionado: {selectedChassis}</p>
@@ -77,18 +81,18 @@ function PreView() {
                 <p>Motor seleccionado: {selectedEngine?.nombre}</p> 
                 <p>Color seleccionado: {selectedColor} </p>
                 <div className="audio-player">
-                  <audio controls>
-                    <source src={selectedEngine.sonido} type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                  </audio>
+                    <audio controls>
+                        <source src={selectedEngine.sonido} type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                    </audio>
                 </div> 
-              </div>
-              <div className="car-image-container" style={{ backgroundColor: selectedColor, overflow: 'hidden'}}>
-                <img src={carImage} alt="PreView" className="car-image" />
-              </div>
-              <button className="finish-button">Finish</button>
             </div>
-        );
-  }
-  
-  export default PreView;
+            <div className="car-image-container" style={{ backgroundColor: selectedColor, overflow: 'hidden'}}>
+                <img src={carImage} alt="PreView" className="car-image" />
+            </div>
+            <button className="finish-button" onClick={handleFinish}>Finish</button>
+        </div>
+    );
+}
+
+export default PreView;

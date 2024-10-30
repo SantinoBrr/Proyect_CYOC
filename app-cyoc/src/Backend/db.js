@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 
-// Abrir o crear la base de datos
+
 const db = new sqlite3.Database('./users.db', (err) => {
   if (err) {
     console.error('Error al conectar con la base de datos:', err.message);
@@ -9,7 +9,7 @@ const db = new sqlite3.Database('./users.db', (err) => {
   }
 });
 
-// Crear la tabla de usuarios si no existe
+
 db.run(`CREATE TABLE IF NOT EXISTS usuarios (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nombre TEXT NOT NULL,
@@ -17,12 +17,16 @@ db.run(`CREATE TABLE IF NOT EXISTS usuarios (
   contraseña TEXT NOT NULL
 )`);
 
-// Crear la tabla de modelos si no existe
+
 db.run(`CREATE TABLE IF NOT EXISTS models (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   description TEXT,
   user_id INTEGER,
+  chasis TEXT NOT NULL,
+  rueda TEXT NOT NULL,
+  motor TEXT NOT NULL,
+  color TEXT NOT NULL,
   FOREIGN KEY(user_id) REFERENCES usuarios(id)
 )`);
 

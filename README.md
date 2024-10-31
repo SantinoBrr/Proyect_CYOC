@@ -1,7 +1,6 @@
 # Proyect CYOC 🚗
 
 CYOC (Create Your Own Car) permite a **amantes de los autos** probar y visualizar combinaciones de modelos de vehículos, facilitando la creación y personalización de nuevos diseños.  
-El sitio también incluye un **foro** para que los diseñadores puedan compartir y recibir opiniones sobre los modelos.
 
 ---
 
@@ -10,17 +9,17 @@ El sitio también incluye un **foro** para que los diseñadores puedan compartir
 Para iniciar la aplicación, sigue estos pasos:
 
 1. **Instalar dependencias**:  
-    Si no tienes instalados los `node_modules`, ejecuta el siguiente comando en tu terminal:
+    Si no tienes instalados los `node_modules`, ejecuta el siguiente comando en tu terminal (procura estar en la carpeta `app-cyoc`):
 
     ```bash
+    cd /app-cyoc # Esto te movera a la carpeta la cual tiene el proyecto
     npm install
     ```
 
 2. **Iniciar la aplicación**:  
-    Luego de instalar las dependencias, inicia la aplicación con el siguiente comando (procura estar en la carpeta `app-cyoc`):
+    Luego de instalar las dependencias, inicia la aplicación con el siguiente comando:
 
     ```bash
-    cd /app-cyoc # Esto te movera a la carpeta la cual tiene el proyecto
     npm start # Este comando inicia el proyecto react
     ```
 ---

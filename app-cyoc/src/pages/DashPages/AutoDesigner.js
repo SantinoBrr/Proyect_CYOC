@@ -95,7 +95,12 @@ function AutoDesigner() {
                 className={`grid-box ${selectedChassis === chassisNames[index] ? 'selected green-highlight' : ''}`}
                 onClick={() => handleChassisSelect(index)}
               >
-                <img src={image} alt={`Chassis ${chassisNames[index]}`} className="chassis-image" />
+                <img 
+                  src={image} 
+                  alt={`Chassis ${chassisNames[index]}`} 
+                  className="chassis-image" 
+                  title={chassisNames[index]}
+                />
               </button>
             ))}
           </div>
@@ -110,7 +115,12 @@ function AutoDesigner() {
                 className={`grid-box wheel-box ${selectedWheel === index ? 'selected' : ''}`}
                 onClick={() => handleWheelSelect(index)}
               >
-                <img src={image} alt={`Wheel ${index + 1}`} className="wheel-image" />
+                <img 
+                  src={image} 
+                  alt={`Wheel ${index + 1}`} 
+                  className="wheel-image" 
+                  title={`Wheel ${index + 1}`}
+                />
               </button>
             ))}
           </div>
@@ -143,7 +153,7 @@ function AutoDesigner() {
               <HexColorPicker 
                 color={color} 
                 onChange={handleColorChange} 
-                style={{ width: '100%', height: '200px' }} // Estilo modificado
+                style={{ width: '100%', height: '200px' }}
               />
               <input
                 type="text"

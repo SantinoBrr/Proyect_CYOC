@@ -7,6 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
+
 const logMessage = (message) => {
   const log = `${new Date().toISOString()} - ${message}\n`;
   fs.appendFile('server.log', log, (err) => {
@@ -20,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Registro de usuarios
+
 app.post('/register', (req, res) => {
   const { nombre, correo, contraseña } = req.body;
 
@@ -59,7 +60,7 @@ app.post('/register', (req, res) => {
   });
 });
 
-// Inicio de sesión
+
 app.post('/login', (req, res) => {
   const { correo, contraseña } = req.body;
 
@@ -95,7 +96,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-// Obtener modelos del usuario
+
 app.get('/api/MyModels', (req, res) => {
   const userID = req.query.userID;
 
@@ -113,7 +114,7 @@ app.get('/api/MyModels', (req, res) => {
   });
 });
 
-// Buscar modelos por nombre
+
 app.get('/api/models', (req, res) => {
   const { name } = req.query;
 
@@ -131,10 +132,11 @@ app.get('/api/models', (req, res) => {
   });
 });
 
-// Agregar un nuevo modelo
+
 app.post('/api/models', (req, res) => {
   const { name, description, user_id, chasis, rueda, motor, color } = req.body;
 
+ 
   if (!name || !user_id || !chasis || !rueda || !motor || !color) {
     return res.status(400).json({ success: false, message: 'Faltan datos requeridos para el modelo.' });
   }
@@ -152,7 +154,7 @@ app.post('/api/models', (req, res) => {
   );
 });
 
-// Servir archivos estáticos
+
 app.use(express.static(path.join(__dirname, '../build')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));

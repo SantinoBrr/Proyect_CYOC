@@ -7,7 +7,6 @@ const authService = {
         const name = localStorage.getItem('name');
         const loginTime = localStorage.getItem('loginTime');
 
-
         if (token && email && name) {
             const now = new Date().getTime();
             const hoursSinceLogin = (now - loginTime) / (1000 * 60 * 60);
@@ -16,7 +15,7 @@ const authService = {
                 console.log('Session expired due to inactivity');
                 authService.logout(); 
             } else {
-                currentUser = { email, name };
+                currentUser = { email, name }; // Aquí puedes agregar userID si está disponible
                 console.log('Session loaded:', currentUser);
             }
         }
@@ -34,13 +33,13 @@ const authService = {
 
             const data = await response.json();
             if (response.ok) {
-                currentUser = { email: data.email, name: data.name };
+                currentUser = { email: data.email, name: data.name, userID: data.userID }; // Aquí se agrega el userID
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('email', data.email);
                 localStorage.setItem('name', data.name);
                 localStorage.setItem('loginTime', new Date().getTime());
                 console.log('Login successful');
-                return { success: true, email: data.email, name: data.name };
+                return { success: true, email: data.email, name: data.name, userID: data.userID }; // Devuelve el userID
             } else {
                 console.log('Login failed:', data.message);
                 return { success: false, message: data.message || 'Login failed' };

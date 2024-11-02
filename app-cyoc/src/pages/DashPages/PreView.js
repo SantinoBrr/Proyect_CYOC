@@ -56,7 +56,7 @@ const carImages = {
 function PreView() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { selectedChassis, selectedWheel, selectedEngine, selectedColor, vehicleName, description, userId } = location.state || {};
+    const { selectedChassis, selectedWheel, selectedEngine, selectedColor, vehicleName, description } = location.state || {};
 
     console.log("Chasis seleccionado:", selectedChassis);
     console.log("Rueda seleccionada:", selectedWheel);
@@ -66,31 +66,8 @@ function PreView() {
         : null;
 
     const handleFinish = () => {
-        
-        const modelData = {
-            name: vehicleName,
-            description: description,
-            user_id: userId,
-            chassis: selectedChassis,
-            wheel: selectedWheel,
-            engine: selectedEngine?.nombre,
-            color: selectedColor
-        };
-
-        
-        fetch('/api/models', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(modelData),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Modelo guardado:', data);
-            navigate('/'); 
-        })
-        .catch(error => console.error('Error al guardar el modelo:', error));
+        // Redirigir a la página de inicio al hacer clic en el botón
+        navigate('/');  
     };
 
     return (

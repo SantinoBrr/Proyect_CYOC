@@ -1,3 +1,4 @@
+// UserContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import authService from '../Components/services/authService';
 
@@ -9,7 +10,8 @@ export const UserProvider = ({ children }) => {
     const login = async (credentials) => {
         const response = await authService.login(credentials.email, credentials.password);
         if (response.success) {
-            setUser({ email: response.email, name: response.name });
+            // Agregamos userID al estado del usuario
+            setUser({ email: response.email, name: response.name, userID: response.userID });
         }
         return response;
     };

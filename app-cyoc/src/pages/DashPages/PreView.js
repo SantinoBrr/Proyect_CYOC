@@ -66,7 +66,6 @@ function PreView() {
         : null;
 
     const handleFinish = () => {
-        // Redirigir a la página de inicio al hacer clic en el botón
         navigate('/');  
     };
 
